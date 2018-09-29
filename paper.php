@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Snapaper | All Subjects</title>
+        <title>Snapaper | <?php echo $_GET['sub']; ?></title>
         <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,
     width=device-width,initial-scale=1.0" />
         <link href="https://static.zeo.im/uikit.min.css" rel="stylesheet">
@@ -104,7 +104,15 @@ if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
     
     $cate = $_GET['cate'];
     $sub = $_GET['sub'];
-    $url = 'https://papers.gceguide.com/'.$cate.'/'.$sub;//生成查询页面
+    
+    if($cate == 'A Levels' && $sub == 'Business Studies (9707)'){
+        $url = 'https://papers.gceguide.com/A%20Levels/Business%20Studies%20%20(9707)';//生成商业查询页面(下方格式爬取失败)
+    }elseif($cate == 'A Levels' && $sub == 'English - Language AS and A Level (9093)'){
+        $url = 'https://papers.gceguide.com/A%20Levels/English%20-%20Language%20AS%20and%20A%20Level%20%20(9093)/';//生成商业查询页面(下方格式爬取失败)
+    }else{
+        $url = 'https://papers.gceguide.com/'.$cate.'/'.$sub;//生成查询页面
+    }
+    
     $html = file_get_contents($url);
     $data = QueryList::html($html)->rules([
     'name' => ['.file>td>a','text'],
@@ -163,7 +171,7 @@ function downloadFile(srcUrl) {
     for($i=0;$i<count($user_data);$i++){ //循环获取数据
 ?>
 
-
+        <?php if($user_data[$i]['name'] != 'error_log'){ ?>
         <tr>
             <td class="papers-list-td-left"><a href="<?php echo '/download.php?filename='.$url.'/'.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
             <td class="papers-list-td-right">
@@ -177,7 +185,7 @@ function downloadFile(srcUrl) {
     
 
     
-<?php }} ?>
+<?php }}} ?>
 </tbody>
 </table>
 

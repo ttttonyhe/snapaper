@@ -145,7 +145,7 @@ body a{
 
 .papers-list-td-btn1:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: translateY(-2px);
+    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn1-change{
@@ -165,7 +165,7 @@ body a{
 
 .papers-list-td-btn1-change:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: translateY(-2px);
+    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn2{
@@ -185,7 +185,7 @@ body a{
 
 .papers-list-td-btn2:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: translateY(-2px);
+    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn3{
@@ -205,13 +205,18 @@ body a{
 
 .papers-list-td-btn3:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: translateY(-2px);
+    transform: scale(1.03,1.03);
 }
 
 .sublist{
-    margin-top:2%;display: grid;
+    margin-top:2%;
+    display: grid;
     grid-template-columns: 31% 31% 31%;
     grid-template-rows: auto auto;
+}
+
+.sublist-1{
+    margin-top:2%;
 }
 
 .index-copy{
