@@ -15,6 +15,11 @@ First version released
 1. Now using Grid layout in subjects pages
 2. Fixed a bug where 「Back」 button could not be used under some browsers 
 
+#### V0.13
+1. Fixed a bug where the past papers were not found in some subjects
+2. Change the domain from papers.ouorz.com to snapaper.com
+3. Improved papers list button style 
+
 <br/>
 
 ## Copyrights
@@ -23,6 +28,6 @@ All Contents & names of this website are assets of owner, protected by law and p
 <br/>
 
 ## Technical details
-This website (https://papers.ouorz.com) does not have a database, all content data comes from GCE Guide (http://www.gceguide.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) website, all the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) to provide a convenient download extension. This is 100% a non-profit website.
+This website (https://www.snapaper.com) does not have a database, all content data comes from GCE Guide (http://www.gceguide.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) website, all the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) to provide a convenient download extension. This is 100% a non-profit website.
 <br/><br/>
 Many thanks to [QueryList](https://querylist.cc)
