@@ -8,7 +8,7 @@
         <link href="https://static.zeo.im/uikit.min.css" rel="stylesheet">
         <link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
         <script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
-        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://static.ouorz.com/jquery.min.js"></script>
         <link href="style.css" rel="stylesheet">
         <link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_temp_logo.ico" type="image/x-icon">
         
@@ -19,6 +19,8 @@
         if(urls == ''){ //为空则提示
             alert('Can not download empty list');
         }else{
+        $('#count_list_notice')[0].style.display = 'none';
+        toTop();
         $('#dl')[0].innerHTML = '<button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Processing...</button><button class="uk-button uk-button-default" style="border-radius: 5px;margin-left: 0.5%;" onclick="location.reload();">Refresh</button>'; //修改按钮
         $('#notice')[0].style.display = 'unset'; //显示提示
         var url = urls.split(','); //半角逗号分隔字符串为数组
@@ -43,6 +45,14 @@
         var current = $('#download_items').val(); //获取当前列表值
         var current = current.split(','); //分隔列表字符串为数组
         current.splice($.inArray(id,current),1); //获取删除值位置并删除
+        
+        var now_count = current.length;
+        if(now_count == 0){
+            $('#count_list_notice')[0].style.display = 'none';
+        }else{
+            $('#list_count')[0].innerHTML = now_count;
+        }
+        
         var now = current.join(","); //数组转换回字符串
         $('#download_items').val(now); //存入列表值
         var change = '#btn'+id; //补全提示已修改的按钮id
@@ -50,6 +60,7 @@
         $(change)[0].innerHTML = 'Add to List'; //修改按钮文本
         $(change)[0].className = 'papers-list-td-btn1'; //修改按钮css
         console.log($('#download_items').val()); //方便debug
+        
 }
     
     function add_items(id){ //增加列表值
@@ -61,6 +72,9 @@
             $(change).attr('onclick', 'remove_items('+ id +')');
             $(change)[0].innerHTML = 'Remove from List';
             $(change)[0].className = 'papers-list-td-btn1-change';
+            
+            $('#count_list_notice')[0].style.display = 'unset';
+            $('#list_count')[0].innerHTML = '1';
         }else{
             var now = current + ',' + id //否则增加连接符
             var change = '#btn'+id;
@@ -68,6 +82,10 @@
             $(change).attr('onclick', 'remove_items('+ id +')');
             $(change)[0].innerHTML = 'Remove from List';
             $(change)[0].className = 'papers-list-td-btn1-change';
+            
+            now = current.split(",");
+            var now_count = now.length + 1;
+            $('#list_count')[0].innerHTML = now_count;
         }
         console.log($('#download_items').val());
 }
@@ -78,10 +96,71 @@ function down(id){
     $(id)[0].click();
 }
 
+/* UX 功能 */
+function toTop(){
+        var gotoTop= function(){
+          var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+          currentPosition -= 50;
+          if (currentPosition > 0) {
+            window.scrollTo(0, currentPosition);
+          }
+          else {
+            window.scrollTo(0, 0);
+            clearInterval(timer);
+            timer = null;
+          }
+        }
+        var timer=setInterval(gotoTop,0.3);
+}
+
+function toBottom(){
+    $('#bottom')[0].scrollIntoView();
+}
+
+/* 随浏览器变化而改变 */
+
+function getScrollTop() {　　
+    return scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+}
+
+window.onscroll = function () {
+    if (getScrollTop() <= 400) {
+        $('#to_top')[0].style.display = 'none';
+        $('#to_bottom')[0].style.display = 'none';
+        $('#sticky')[0].style.display = 'none';
+    }else {
+        $('#to_top')[0].style.display = 'unset';
+        $('#to_bottom')[0].style.display = 'unset';
+        $('#sticky')[0].style.display = 'unset';
+    }
+}
+/* 结束随浏览器变化而改变 */
+
+
+
+/* 结束 UX 功能 */
+
 </script>
 
     </head>
     <body>
+        
+        
+    <div class="papers-list-sticky uk-animation-slide-top-small" id="sticky">
+        <div style="float: left;">
+            <h3 style="margin-bottom: 0px;font-weight: 600;">Viewing</h3>
+            <p style="margin: 0px;font-weight: 300;margin-top: -3px;"><?php echo $_GET['sub']; ?></p></div><div style="float: right;padding-top: 10px;">
+                <a onclick="download_all();" style="display: inline-block;">
+                    <button class="uk-button uk-button-primary" style="border-radius: 5px;padding: 0px 10px;">Download All</button>
+                </a>
+                <a onclick="download_list();" style="display: inline-block;width: 140px;">
+                    <button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;padding: 0px 10px;">Download List</button>
+                </a>
+        </div>
+    </div>
+    
+    
+    
     <div class="uk-container" style="margin-top: 10%;">
     <div style="display: flex;">
         <div style="width: 90%;">
@@ -129,10 +208,21 @@ if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
         <button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download List    </button>
     </a>
 </div>
+
+
+
 <div id="notice" style="display: none">1. Do not leave this page, the download of these files will start automatically after <b>3 seconds</b>.<br/>2. You need to <b>manually refresh</b> this page before performing the next download.<br/>3. You need to set the file download path <b>in advance</b>, you will not have the opportunity to choose the download path during the download process.</div>
 
+
+
+<div class="papers-list-list-notice uk-animation-slide-bottom-small" id="count_list_notice">
+    <p><b id="list_count">0</b> Paper(s) in List</p>
+</div>
+
+
+
 <table class="uk-table uk-table-hover uk-table-divider">
-    <thead>
+    <thead id="x">
         <tr>
             <th style="text-align:left">Paper Name</th>
             <th style="text-align:left">Options</th>
@@ -147,6 +237,8 @@ function downloadFile(srcUrl) {
 }
 
     function download_all(){ //全部下载
+        $('#count_list_notice')[0].style.display = 'none';
+        toTop();
         $('#dl')[0].innerHTML = '<button class="uk-button uk-button-primary" style="border-radius: 5px;margin-left: 0.5%;">Processing...</button><button class="uk-button uk-button-default" style="border-radius: 5px;margin-left: 0.5%;" onclick="location.reload();">Refresh</button>'; //修改按钮
         $('#notice')[0].style.display = 'unset'; //显示提示
         var idname = ''; //初始化idname
@@ -189,7 +281,19 @@ function downloadFile(srcUrl) {
 </tbody>
 </table>
 
+<div class="uk-placeholder uk-text-center" id="bottom">Paper resources are from GCE Guide, no one has the right to change and share them</div>
+
 <input type="hidden" id="download_items">
+
+<!-- 底部按钮 -->
+<a class="papers-list-to-top uk-animation-slide-right-small" id="to_top" onclick="toTop();">
+    <svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="4 13 10 7 16 13"></polyline></svg>
+</a>
+<a class="papers-list-to-top uk-animation-slide-right-small" style="bottom: 92px;" id="to_bottom" onclick="toBottom();">
+    <svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>
+</a>
+
+
 
 <?php } ?>
 
