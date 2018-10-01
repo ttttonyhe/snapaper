@@ -20,6 +20,12 @@ First version released
 2. Change the domain from papers.ouorz.com to snapaper.com
 3. Improved papers list button style 
 
+#### V0.15
+1. New menu shortcut download button on papaers page
+2. Added "Back to Top" and "Back to Bottom" buttons on papers page
+3. Added a notification page for maintenance
+4. Added a toolbar to count the number of test papers that have been added to the list on papers page 
+
 <br/>
 
 ## Copyrights
