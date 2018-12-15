@@ -26,6 +26,19 @@ First version released
 3. Added a notification page for maintenance
 4. Added a toolbar to count the number of test papers that have been added to the list on papers page 
 
+#### V0.16
+1.UI adjustment
+2.New index design
+3.New feature —— Extensions
+4.New extension —— OneStep
+5.Added a donate page 
+
+#### V0.17
+1.Added a associated paper shortcut button
+2.Added a bar to display the total number of items in each page
+3.Added a Switch Server button
+4.Paper display page redesigned 
+
 <br/>
 
 ## Copyrights
