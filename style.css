@@ -120,7 +120,7 @@ body a{
 
 .papers-list-td-right{
     padding: 0px !important;
-    width: 443.33px !important;
+    width: 480px !important;
 }
 
 .papers-list-td-right p{
@@ -145,7 +145,6 @@ body a{
 
 .papers-list-td-btn1:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn1-change{
@@ -165,7 +164,6 @@ body a{
 
 .papers-list-td-btn1-change:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn2{
@@ -185,7 +183,6 @@ body a{
 
 .papers-list-td-btn2:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: scale(1.03,1.03);
 }
 
 .papers-list-td-btn3{
@@ -205,7 +202,6 @@ body a{
 
 .papers-list-td-btn3:hover{
     box-shadow: 0 2px 8px #f0f1f2;
-    transform: scale(1.03,1.03);
 }
 
 .sublist{
@@ -223,4 +219,213 @@ body a{
     margin-bottom: 20% !important;
     font-weight: 100;
     letter-spacing: 1px;
+}
+
+.papers-list-to-top{
+    cursor: pointer;position: fixed;color: #848fa6;background-color: #ffffff;display: inline-block;line-height: 45px;text-align: center;border-radius: 30px;z-index: 101;box-shadow: 0px 0px 6px 0px rgba(26, 26, 26, 0.14);right: 30px;bottom: 38px;height: 47px;width: 47px;display: none;
+}
+
+.papers-list-list-notice{
+    background-color: #fff;
+    z-index: 2;
+    text-align: center;
+    width: 20%;
+    padding: 15px 5px;
+    position: fixed;
+    border-radius: 5px;
+    bottom: 20px;
+    box-shadow: 0px 1px 8px 0px rgba(217, 217, 217, 0.7098039215686275);
+    display: none;
+}
+
+.papers-list-list-notice p{
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+}
+
+.slide{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    background-color: #fff;
+    display: none;
+}
+
+.slide h2{
+    text-align: center;
+}
+
+.slide-title{
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.slide-des{
+    margin-top: 5px;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #666;
+}
+
+.papers-list-sticky{
+    width: 1201.11px;
+    height: 55px;
+    margin-left: calc((100% - 1201.11px) / 2);
+    background-color: rgb(255, 255, 255);
+    padding: 1px 15px;
+    z-index: 9999;
+    top: 0px;
+    position: fixed;
+    display: none;
+}
+
+.cate-toolbar{
+    width: 88.1%;
+    height: 65px;
+    padding: 0px 30px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.cate-toolbar-left{
+    float: left;
+    padding-top: 17px;
+}
+
+.cate-toolbar-left p{
+    margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+
+.item-guide{
+    margin-top: 15px;
+    display: inline-block;
+    transition: all .3s;
+}
+
+.item-guide:hover{
+    padding-right: 5px;
+    padding-left: 2px;
+}
+
+.header-div{
+    box-shadow: 0px 1px 7px rgba(0,0,0,.08);
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    padding: 12px 0px;
+    background: #fff;
+    z-index: 9999;
+}
+
+.nav-1{
+    text-align: left;
+    float: left;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    margin-top: -5px;
+}
+
+.nav-title{
+    font-weight: 600;
+    color: #555;
+    letter-spacing: .5px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.nav-title-img{
+    width: 35px;
+    margin-right: 5px;
+    margin-top: -4px;
+}
+
+.nav-title-v{
+    display: inline-block;
+    font-size: .5rem;
+    margin-top: -3px;
+    padding: 0px 6px;
+}
+
+.nav-2{
+    float: right;
+    text-align: right;
+    list-style: none;
+    margin: 0px;
+    margin-top: 6px;
+    padding: 0px;
+}
+
+.nav-2-icon1{
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.nav-2-icon2{
+    display: inline-block;
+}
+
+.sub-title-div{
+    margin-bottom: 10px;
+}
+
+
+.sub-title-h1{
+    font-weight: 600;
+    color: #444;
+    margin: 0px;
+    font-size: 3rem;
+}
+
+.sub-title-p{
+    margin: 0px;
+    font-weight: 200;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.sub-title-div2{
+    margin-bottom: 30px;
+    margin-top: 5%;
+}
+
+.sub-title-div2-h1{
+    font-weight: 600;
+    color: #444;
+    margin: 0px;
+    font-size: 3rem;
+}
+
+.sub-title-div2-p{
+    margin: 0px;
+    font-weight: 200;
+    font-size: 1.1rem;
+    color: #888;
+}
+
+.sub-title-div2-span{
+    padding: 0px 8px;
+    text-transform: capitalize;
+    margin-left: 5px !important;
+    font-size: .8rem;
+}
+
+.back-btn{
+	background: #f1f3f4;
+    padding: 7px 17px 9px 17px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-style: normal;
 }

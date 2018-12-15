@@ -12,6 +12,15 @@
         <script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
         <link href="style.css" rel="stylesheet">
         <link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_temp_logo.ico" type="image/x-icon">
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a4a7b388691389952cef0d953a72ff9b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
     </head>
     <body>
     <div class="uk-container" style="margin-top: 10%;">
@@ -38,7 +47,7 @@
             </div>
             <a href="/maintenance.html" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Learn More<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
-    <p class="index-copy">Made with <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill="none" stroke="#ee561d" stroke-width="1.03" d="M10,4 C10,4 8.1,2 5.74,2 C3.38,2 1,3.55 1,6.73 C1,8.84 2.67,10.44 2.67,10.44 L10,18 L17.33,10.44 C17.33,10.44 19,8.84 19,6.73 C19,3.55 16.62,2 14.26,2 C11.9,2 10,4 10,4 L10,4 Z"></path></svg> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | Powered by <b><a href="https://www.gceguide.com" target="_blank" style="color:#7c7c7c">GCE Guide</a></b></p>
+    <p class="index-copy">Made with <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill="none" stroke="#ee561d" stroke-width="1.03" d="M10,4 C10,4 8.1,2 5.74,2 C3.38,2 1,3.55 1,6.73 C1,8.84 2.67,10.44 2.67,10.44 L10,18 L17.33,10.44 C17.33,10.44 19,8.84 19,6.73 C19,3.55 16.62,2 14.26,2 C11.9,2 10,4 10,4 L10,4 Z"></path></svg> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | Powered by <b><a href="https://www.gceguide.xyz" target="_blank" style="color:#7c7c7c">GCE Guide</a></b></p>
 </div>
     </body>
 </html>

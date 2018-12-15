@@ -1,18 +1,56 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Snapaper | <?php echo $_GET['sub']; ?></title>
-        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,
-    width=device-width,initial-scale=1.0" />
-        <link href="https://static.zeo.im/uikit.min.css" rel="stylesheet">
-        <link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
-        <script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
-        <script src="https://static.ouorz.com/jquery.min.js"></script>
-        <link href="style.css" rel="stylesheet">
-        <link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_temp_logo.ico" type="image/x-icon">
-        
-        <script>
+<?php
+//Composer 依赖
+require 'vendor/autoload.php';
+use QL\QueryList;
+
+/* 获取服务器源 */
+$com0 = 'https://papers.gceguide.com';
+$xyz1 = 'https://papers.gceguide.xyz';
+if(!isset($_COOKIE['snapaper_server'])){
+    $source = $com0;
+}else{
+	$source = $_COOKIE['snapaper_server'];
+	if($source == 0){
+    	$source = $com0;
+	}elseif($source == 1){
+		$source = $xyz1;
+	}else{
+		$source = $com0;
+	}
+}
+/* 结束获取服务器源 */
+
+//判断参数是否输入
+if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
+    
+    $cate = $_GET['cate'];
+    $sub = $_GET['sub'];
+    
+    if($cate == 'A Levels' && $sub == 'Business Studies (9707)'){
+        $url = $source.'/A%20Levels/Business%20Studies%20%20(9707)';//生成商业查询页面(下方格式爬取失败)
+    }elseif($cate == 'A Levels' && $sub == 'English - Language AS and A Level (9093)'){
+        $url = $source.'/A%20Levels/English%20-%20Language%20AS%20and%20A%20Level%20%20(9093)/';//生成商业查询页面(下方格式爬取失败)
+    }else{
+        $url = $source.'/'.$cate.'/'.$sub;//生成查询页面
+    }
+    
+    $html = file_get_contents($url);
+    $data = QueryList::html($html)->rules([
+    'name' => ['tr>td>a','text'],
+    'url' => ['tr>td>a','href']
+    ])->query()->getData();
+    $user_data = $data->all(); //获取查询数据
+?>
+
+
+
+<?php require 'header.php' ?>
+
+    <script>
+    
+    function live(url){
+		window.open(url,"","top=100,left=300,width=800,height=1000");
+	}
     
     function download_list(){ //列表下载
         var urls = $('#download_items').val(); //获取列表数据
@@ -44,7 +82,9 @@
     function remove_items(id){ //删除列表指定id 值
         var current = $('#download_items').val(); //获取当前列表值
         var current = current.split(','); //分隔列表字符串为数组
-        current.splice($.inArray(id,current),1); //获取删除值位置并删除
+        current = $.grep(current, function(value) {
+            return value != id;
+        }); //获取删除值位置并删除
         
         var now_count = current.length;
         if(now_count == 0){
@@ -83,7 +123,7 @@
             $(change)[0].innerHTML = 'Remove from List';
             $(change)[0].className = 'papers-list-td-btn1-change';
             
-            now = current.split(",");
+            now = current.split(","); //分隔成数组获取个数
             var now_count = now.length + 1;
             $('#list_count')[0].innerHTML = now_count;
         }
@@ -91,13 +131,9 @@
 }
 
 
-function down(id){
-    var id = '#'+id;
-    $(id)[0].click();
-}
-
 /* UX 功能 */
 function toTop(){
+    /*
         var gotoTop= function(){
           var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
           currentPosition -= 50;
@@ -111,6 +147,8 @@ function toTop(){
           }
         }
         var timer=setInterval(gotoTop,0.3);
+        */
+    $('#top')[0].scrollIntoView();
 }
 
 function toBottom(){
@@ -132,21 +170,25 @@ window.onscroll = function () {
         $('#to_top')[0].style.display = 'unset';
         $('#to_bottom')[0].style.display = 'unset';
         $('#sticky')[0].style.display = 'unset';
+        $('#update')[0].style.display = 'none';
     }
 }
 /* 结束随浏览器变化而改变 */
 
+function dismiss(){
+    $('#update')[0].style.display = 'none';
+}
 
 
 /* 结束 UX 功能 */
 
 </script>
-
-    </head>
-    <body>
         
+    
+    <div class="papers-list-sticky" style="display:unset;width: 100%;border-radius: 0px;height: 40px;margin-left: 0px;text-align: center;z-index: 9998;padding-top: 15px;border-top: 2px solid #f0506e;" id="update"><p>We recommend using <b>Chrome</b> or some of the latest modern browsers for the best experience. <a href="https://www.google.cn/chrome/index.html" target="_blank">Click here to download Chrome</a>&nbsp;<a onclick="dismiss();" style="color: #f0506e;border: 1px solid #f0506e;padding: 4px 7px;border-radius: 4px;margin-left: 20px;"><svg width="19" height="19" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="margin-top: -3.5px;margin-right: 2px;"> <path fill="none" stroke="#f0506e" stroke-width="2" d="M16,16 L4,4"></path> <path fill="none" stroke="#f0506e" stroke-width="2" d="M16,4 L4,16"></path></svg>Dismiss</a></p></div>
+    
         
-    <div class="papers-list-sticky uk-animation-slide-top-small" id="sticky">
+    <div class="papers-list-sticky" id="sticky">
         <div style="float: left;">
             <h3 style="margin-bottom: 0px;font-weight: 600;">Viewing</h3>
             <p style="margin: 0px;font-weight: 300;margin-top: -3px;"><?php echo $_GET['sub']; ?></p></div><div style="float: right;padding-top: 10px;">
@@ -162,43 +204,25 @@ window.onscroll = function () {
     
     
     <div class="uk-container" style="margin-top: 10%;">
-    <div style="display: flex;">
-        <div style="width: 90%;">
-            <h1 class="index-title">Snapaper<em><?php echo $_GET['cate']; ?> | <?php echo $_GET['sub']; ?></em></h1>
-            <p class="index-title-p">Built for International Students</p>
-        </div>
-        <div style="padding-top: 60px;">
-            <a onclick="history.go(-1);"><svg width="40" height="40" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="uk-icon uk-svg" style="margin-right: 15px;color: #333;margin-top: -1px;"><line fill="none" stroke="#000" x1="5.5" y1="9.5" x2="15" y2="9.5"></line><line fill="none" stroke="#000" x1="5" y1="1.5" x2="9" y2="1.5"></line><polyline fill="none" stroke="#000" stroke-width="1.03" points="8.5,6.5 5.5,9.5 8.5,12.5"></polyline><polyline fill="none" stroke="#000" points="12.5,7 12.5,2.5 9.5,2.5 9.5,3.5 4.5,3.5 4.5,2.5 1.5,2.5 1.5,15.5 12.5,15.5 12.5,12"></polyline></svg></a>
-            <a href="about.html"><svg width="40" height="40" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <circle cx="10" cy="14" r="1"></circle> <circle fill="none" stroke="#000" stroke-width="1.1" cx="10" cy="10" r="9"></circle> <path d="M10.97,7.72 C10.85,9.54 10.56,11.29 10.56,11.29 C10.51,11.87 10.27,12 9.99,12 C9.69,12 9.49,11.87 9.43,11.29 C9.43,11.29 9.16,9.54 9.03,7.72 C8.96,6.54 9.03,6 9.03,6 C9.03,5.45 9.46,5.02 9.99,5 C10.53,5.01 10.97,5.44 10.97,6 C10.97,6 11.04,6.54 10.97,7.72 L10.97,7.72 Z"></path></svg></a>
-        </div>
+    <div class="sub-title-div" style="margin-bottom:60px;display: flex;" id="top">
+    <div style="width: 73%;">
+        <h1 class="sub-title-h1"><?php echo $_GET['cate']; ?> | <?php echo $_GET['sub']; ?></h1>
+    	<p class="sub-title-p">Made by Snapaper sourced from GCE Guide</p>
+    </div>
+    <div style="text-align: right;padding-top: 40px;display: flex;width:27%">
+    <div>
+    	<em class="back-btn" style="color: #999;"><?php echo count($user_data) - 1; ?> Papers</em>
+	</div>
+	<div style="margin-left: 10px;">
+		<a onclick="history.go(-1);">
+			<em class="back-btn" style="color: #1e87f0;">← Back</em>
+		</a>
+	</div>
+    </div>
+    
     </div>
     <div style="margin-top:2%">
-<?php
-//Composer 依赖
-require 'vendor/autoload.php';
-use QL\QueryList;
 
-//判断参数是否输入
-if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
-    
-    $cate = $_GET['cate'];
-    $sub = $_GET['sub'];
-    
-    if($cate == 'A Levels' && $sub == 'Business Studies (9707)'){
-        $url = 'https://papers.gceguide.com/A%20Levels/Business%20Studies%20%20(9707)';//生成商业查询页面(下方格式爬取失败)
-    }elseif($cate == 'A Levels' && $sub == 'English - Language AS and A Level (9093)'){
-        $url = 'https://papers.gceguide.com/A%20Levels/English%20-%20Language%20AS%20and%20A%20Level%20%20(9093)/';//生成商业查询页面(下方格式爬取失败)
-    }else{
-        $url = 'https://papers.gceguide.com/'.$cate.'/'.$sub;//生成查询页面
-    }
-    
-    $html = file_get_contents($url);
-    $data = QueryList::html($html)->rules([
-    'name' => ['.file>td>a','text'],
-    'url' => ['.file>td>a','href']
-    ])->query()->getData();
-    $user_data = $data->all(); //获取查询数据
-?>
 
 <div style="margin-bottom:10px" id="dl">
     <a onclick="download_all();">
@@ -236,7 +260,7 @@ function downloadFile(srcUrl) {
     $a[0].click();
 }
 
-    function download_all(){ //全部下载
+function download_all(){ //全部下载
         $('#count_list_notice')[0].style.display = 'none';
         toTop();
         $('#dl')[0].innerHTML = '<button class="uk-button uk-button-primary" style="border-radius: 5px;margin-left: 0.5%;">Processing...</button><button class="uk-button uk-button-default" style="border-radius: 5px;margin-left: 0.5%;" onclick="location.reload();">Refresh</button>'; //修改按钮
@@ -257,27 +281,58 @@ function downloadFile(srcUrl) {
         
         window.interval = setInterval(click,3000); //设置interval
     }
+    
+var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+if(isChrome){
+    dismiss(); //chrome浏览器取消显示提示
+}
 </script>
-<?php 
+<?php
     if(!empty($user_data)){ //开始读取数据
+    if($_COOKIE['snapaper_server'] == 0 || !isset($_COOKIE['snapaper_server'])){ //服务器不同时的试卷链接格式不同
     for($i=0;$i<count($user_data);$i++){ //循环获取数据
 ?>
 
         <?php if($user_data[$i]['name'] != 'error_log'){ ?>
         <tr>
-            <td class="papers-list-td-left"><a href="<?php echo '/download.php?filename='.$url.'/'.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
+            <td class="papers-list-td-left"><a href="download?filename=<?php echo $url.'/'.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
             <td class="papers-list-td-right">
                 <p>
                     <button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
-                    <a href="<?php echo $url.'/'.$user_data[$i]['url']; ?>" target="_blank"><button class="papers-list-td-btn3">LiveView</button></a>
-                    <button class="papers-list-td-btn2" onclick="down(<?php echo $i; ?>)">Download</button>
+                    <button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo $url.'/'.$user_data[$i]['url']; ?>')">Download</button>
+                    <a onclick="live('<?php echo $url.'/'.$user_data[$i]['url']; ?>');"><button class="papers-list-td-btn3">LiveView</button></a>
+                    <?php if(strpos($user_data[$i]['name'],'qp')!==false && strpos($user_data[$i]['name'],'2_2')==false){?>
+                    	<a onclick="live('<?php echo $url.'/'.strtr($user_data[$i]['url'],array('qp'=>'ms')); ?>');"><button class="papers-list-td-btn2" style="color: #fbbd01;border: 1px solid #fbbd01;">Mark Scheme</button></a>
+                    <?php }elseif(strpos($user_data[$i]['name'],'ms')!==false && strpos($user_data[$i]['name'],'+')==false && strpos($user_data[$i]['name'],'2_2')==false){ ?>
+                    	<a onclick="live('<?php echo $url.'/'.strtr($user_data[$i]['url'],array('ms'=>'qp')); ?>');"><button class="papers-list-td-btn2" style="color: #6d3cbd;border: 1px solid #6d3cbd;letter-spacing: -1.8px;">Question Paper</button></a>
+                    <?php }else{ ?>
+                    	<button class="papers-list-td-btn2" style="color: #999;border: 1px solid #999;letter-spacing: .5px;">© Snapaper</button>
+                    <?php } ?>
                 </p>
             </td>
         </tr>
     
 
     
-<?php }}} ?>
+<?php }}}else{
+//不使用.com 则使用 .xyz
+for($i=0;$i<count($user_data);$i++){ //循环获取数据
+?>
+
+        <?php if($user_data[$i]['name'] != 'error_log'){ ?>
+        <tr>
+            <td class="papers-list-td-left"><a href="download?filename=<?php echo $source.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo get_paper_type($user_data[$i]['name']); echo $user_data[$i]['name']; ?></p></a></td>
+            <td class="papers-list-td-right">
+                <p>
+                    <button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
+                    <a href="<?php echo $source.$user_data[$i]['url']; ?>" target="_blank"><button class="papers-list-td-btn3">LiveView</button></a>
+                    <button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo $source.$user_data[$i]['url']; ?>')">Download</button>
+                </p>
+            </td>
+        </tr>
+
+
+<?php }}}} ?>
 </tbody>
 </table>
 
