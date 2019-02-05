@@ -1,6 +1,6 @@
 <?php require 'header.php' ?>
        
-<div class="uk-container" style="margin-top: 10%;">
+<div class="uk-container" style="margin-top: 6%;">
     <div class="sub-title-div">
         <h1 class="sub-title-h1">One Step</h1>
     	<p class="sub-title-p">Choose a category and quickly find a paper</p>

@@ -1,45 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-		<head>
-				<meta charset="UTF-8">
-				<title>Snapaper | Past Papers</title>
-				<meta name="keywords" content="IGCSE,ALevel,OLevel,pastpapers,snapaper,snap">
-				<meta name="description" content="Built for International Students">
-				<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,
-		width=device-width,initial-scale=1.0" />
-				<link href="https://static.zeo.im/uikit.min.css" rel="stylesheet">
-				<link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
-				<script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
-				<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-				<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-				<link href="style.css" rel="stylesheet">
-				<link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_logo.ico" type="image/x-icon">
-				<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?a4a7b388691389952cef0d953a72ff9b";
-	var s = document.getElementsByTagName("script")[0];
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-		</head>
-		<body>
-		<header class="header-div"><div class="uk-container">
-        <ul class="nav-1">
-            <li>
-                <a href="https://www.snapaper.com" style="text-decoration:none">
-                    <h3 class="nav-title">
-                    <img src="https://static.ouorz.com/snapaper-logo.png" class="nav-title-img">napaper</h3>
-                </a>
-                    <span class="uk-label uk-label-success nav-title-v">V0.17</span></li></ul>
-        <ul class="nav-2">
-            <li class="nav-2-icon1"><a href="donate.html"><svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill="none" stroke="#ee561d" stroke-width="1.03" d="M10,4 C10,4 8.1,2 5.74,2 C3.38,2 1,3.55 1,6.73 C1,8.84 2.67,10.44 2.67,10.44 L10,18 L17.33,10.44 C17.33,10.44 19,8.84 19,6.73 C19,3.55 16.62,2 14.26,2 C11.9,2 10,4 10,4 L10,4 Z"></path></svg></a></li>
-            <li class="nav-2-icon2"><a href="about.html"><svg width="25" height="25" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <circle cx="10" cy="14" r="1"></circle> <circle fill="none" stroke="#000" stroke-width="1.1" cx="10" cy="10" r="9"></circle> <path d="M10.97,7.72 C10.85,9.54 10.56,11.29 10.56,11.29 C10.51,11.87 10.27,12 9.99,12 C9.69,12 9.49,11.87 9.43,11.29 C9.43,11.29 9.16,9.54 9.03,7.72 C8.96,6.54 9.03,6 9.03,6 C9.03,5.45 9.46,5.02 9.99,5 C10.53,5.01 10.97,5.44 10.97,6 C10.97,6 11.04,6.54 10.97,7.72 L10.97,7.72 Z"></path></svg></a></li>
-        </ul>
-    </div>
-    </header>
-    <div class="uk-container" style="margin-top: 10%;">
+<?php require 'header.php' ?>
+    <div class="uk-container" style="margin-top: 6%;">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;">
     <div style="
     width: 97%;
@@ -61,11 +21,11 @@ var _hmt = _hmt || [];
                 <br/>
                 
                 <h3 class="uk-card-title index-cate-h3">Copyrights</h3>
-                <p>All Contents & names of this website are assets of owner, protected by law and powered by <b>GCE Guide (http://www.gceguide.com)</b></p>
+                <p>All Contents & names of this website are assets of owner, protected by law and powered by <b>GCE Guide (http://www.gceguide.com) or SaveMyExams (https://www.savemyexams.co.uk) or Xtremepapers (https://www.xtremepapers.com)</b></p>
                 <br/>
                 
                 <h3 class="uk-card-title index-cate-h3">Technical details</h3>
-                <p>This website (https://www.snapaper.com) does not have a database. All content data comes from GCE Guide (http://www.gceguide.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) website. All the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) to provide a convenient download extension. This is 100% a non-profit website</p>
+                <p>This website (https://www.snapaper.com) does not have a database. All content data comes from GCE Guide (http://www.gceguide.com) or SaveMyExams (https://www.savemyexams.co.uk) or Xtremepapers (https://www.xtremepapers.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) or SaveMyExams (https://www.savemyexams.co.uk) or Xtremepapers (https://www.xtremepapers.com) website. All the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) or SaveMyExams (https://www.savemyexams.co.uk) or Xtremepapers (https://www.xtremepapers.com) to provide a convenient download extension. This is 100% a non-profit website</p>
                 <br/>
                 
                 <h3 class="uk-card-title index-cate-h3">Author</h3>
@@ -122,7 +82,8 @@ var _hmt = _hmt || [];
                     1.Added a associated paper shortcut button<br/>
                     2.Added a bar to display the total number of items in each page<br/>
                     3.Added a Switch Server button<br/>
-                    4.Paper display page redesigned
+                    4.Paper display page redesigned<br/>
+                    5.Added a new papers source —— Xtremepapers
                     <br/><br/>
                     
                 </p>

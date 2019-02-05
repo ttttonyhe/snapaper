@@ -17,6 +17,6 @@ function forceDownload($filename){
     }
     header('Pragma:no-cache');
 
-    return readfile($filename);;
+    return readfile($filename);
 }
 ?>

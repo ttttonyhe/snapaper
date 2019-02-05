@@ -23,7 +23,7 @@ var _hmt = _hmt || [];
 </script>
     </head>
     <body>
-    <div class="uk-container" style="margin-top: 10%;">
+    <div class="uk-container" style="margin-top: 6%;">
     <div style="display: flex;">
         <div style="width: 94%;">
             <h1 class="index-title">Snapaper<em><iframe src="https://ghbtns.com/github-btn.html?user=HelipengTony&repo=snapaper&type=star&count=true&size=large" frameborder="0" scrolling="0" width="150px" height="30px"></iframe></em></h1>

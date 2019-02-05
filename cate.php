@@ -11,6 +11,7 @@ if( !empty($_GET['cate']) ) {
 /* 获取服务器源 */
 $com0 = 'https://papers.gceguide.com';
 $xyz1 = 'https://papers.gceguide.xyz';
+$xtr4 = 'https://xtremepapers.xyz';
 if(!isset($_COOKIE['snapaper_server'])){
     $source = $com0;
 }else{
@@ -19,6 +20,8 @@ if(!isset($_COOKIE['snapaper_server'])){
     	$source = $com0;
 	}elseif($source == 1){
 		$source = $xyz1;
+	}elseif($source == 4){
+		$source = $xtr4;
 	}else{
 		$source = $com0;
 	}
@@ -26,16 +29,26 @@ if(!isset($_COOKIE['snapaper_server'])){
 /* 结束获取服务器源 */
     
     $cate = $_GET['cate'];
-    $url = $source.'/'.$cate;//生成查询页面
-    $html = file_get_contents($url);
-    $data = QueryList::html($html)->rules([
-    'name' => ['tr>td>a','text']
-    ])->query()->getData();
-    $user_data = $data->all(); //获取查询数据
+    
+    if($source == $xtr4){ //xtremepapers生成查询数据
+        $url = 'https://xtremepapers.xyz/papers/index.php?dir='.urlencode($cate).'/';//生成查询页面
+        $html = file_get_contents($url);
+    	$data = QueryList::html($html)->rules([
+    	'name' => ['.autoindex_td>a','text']
+    	])->query()->getData();
+    	$user_data = $data->all(); //获取查询数据
+    }else{ //GCEGuide生成查询数据
+    	$url = $source.'/'.$cate;//生成查询页面
+    	$html = file_get_contents($url);
+    	$data = QueryList::html($html)->rules([
+    	'name' => ['tr>td>a','text']
+    	])->query()->getData();
+    	$user_data = $data->all(); //获取查询数据
+    }
 ?>
 
 
-    <div class="uk-container" style="margin-top: 10%;">
+    <div class="uk-container" style="margin-top: 6%;padding-left: 11vh;">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;">
     <div style="
     width: 73%;
@@ -70,27 +83,48 @@ if(!isset($_COOKIE['snapaper_server'])){
         
     </script>
     <div id="display_style"></div>
-    <div class="sublist" id="list">
+    <div class="sublist" id="list" uk-scrollspy="target: > .uk-card; cls:uk-animation-slide-bottom-small; delay: 100">
 
 <?php 
     if(!empty($user_data)){ //开始读取数据 
-    for($i=0;$i<count($user_data);$i++){ //循环获取数据
+    	if($source == $xtr4){ //xtremepapers 时
+    		for($i=0;$i<count($user_data);$i++){ //循环获取数据
+    			if($user_data[$i]['name'] != 'error_log' && $user_data[$i]['name'] != '
+Parent Directory'){
 ?>
     <div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card">
             <h3 class="uk-card-title index-cate-h3"><?php echo $user_data[$i]['name']; ?></h3>
-            <a href="/paper?cate=<?php echo $cate ?>&sub=<?php echo $user_data[$i]['name']; ?>"><p class="item-guide">Browse All Papers</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            <?php
+            	//传参时需使用一种神奇的格式，此处只能用字符串替换来实现(urlencode不可适用)
+            	$name = $user_data[$i]['name'];
+            	$find = array(' ','(',')');
+            	$replace = array('%2520','%2528','%2529');
+            	$name = str_replace($find,$replace,$name);
+            ?>
+            <a href="/paper?cate=<?php echo urlencode($cate); ?>&sub=<?php echo $name; ?>"><p class="item-guide">Browse All Papers</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
         </div>
-<?php }} ?>
+<?php }}
+    	}else{ //GCEGuide时
+			for($i=0;$i<count($user_data);$i++){ //循环获取数据
+				if($user_data[$i]['name'] != 'error_log' && $user_data[$i]['name'] != '
+Parent Directory'){
+?>
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card">
+            <h3 class="uk-card-title index-cate-h3"><?php echo $user_data[$i]['name']; ?></h3>
+            <a href="/paper?cate=<?php echo $cate; ?>&sub=<?php echo $user_data[$i]['name']; ?>"><p class="item-guide">Browse All Papers</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+        </div>
+<?php }}
+			} ?>
 
 <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="width: 97%;margin-left: 2%;padding: 40px 30px;display: inline-block;border: 3px solid #999;border-radius: 5px;transition: all .3s;margin-bottom: 10%;">
     <h3 style="font-weight: 600;color: #555;font-size: 2.4rem;margin: 0px;letter-spacing: 1px;"><?php echo $cate; ?></h3>
 	<p style="margin: 0px;letter-spacing: 2px;color: #999;">Past Papers</p>
-	<p style="color: #888;margin-top: 25px;">All Contents &amp; Names of this website are assets of owner, protected by law and powered by GCE Guide</p>
+	<p style="color: #888;margin-top: 25px;">All Contents &amp; Names of this website are assets of owner, protected by law and powered by GCE Guide/Xtremepapers</p>
 </div>
 
 <?php }else{ ?>
 <div class="uk-placeholder uk-text-center" id="bottom">Service is temporarily unavailable</div>
-<?php } ?>
+<?php }} ?>
 
     </div>
 </div>
