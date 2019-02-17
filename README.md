@@ -2,7 +2,7 @@
 ### Built for International Students | Made with ![Love](https://static.ouorz.com/heart_16px_501363_easyicon.net.png) by TonyHe
 
 <br/>
-![Thumbnail](https://i.loli.net/2019/02/17/5c693e385b0c0.png)
+![Thumbnail] (https://i.loli.net/2019/02/17/5c693e385b0c0.png)
 
 ## Change Logs
 #### V0.1
