@@ -3,7 +3,10 @@
 
 <br/>
 
-![Thumbnail](https://i.loli.net/2019/02/17/5c693e385b0c0.png)
+![Thumbnail1](https://i.loli.net/2019/02/17/5c693e385b0c0.png)
+![Thumbnail2](https://i.loli.net/2019/02/17/5c693f373b1ba.png)
+
+<br/>
 
 ## Change Logs
 #### V0.1
