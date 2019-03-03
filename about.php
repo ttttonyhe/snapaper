@@ -86,6 +86,10 @@
                     5.Added a new papers source —— Xtremepapers
                     <br/><br/>
                     
+                    <b>V0.18</b><br/>
+                    1.Rebuilt using Vue.js<br/>
+                    2.API is now available
+                    <br/><br/>
                 </p>
                 <br/>
                 </div>

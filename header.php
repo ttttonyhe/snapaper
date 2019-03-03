@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
         				echo $_COOKIE['snapaper_server'] + 1; 
         			}?>
         		</b></a></li>
-            <li class="nav-2-icon1" style="background: #fff;padding: 2px 10px;border: 1px solid #999;border-radius: 4px;font-size: .9rem;" uk-tooltip="title: When there is a problem with our service, you can choose to switch to another server node by clicking 'Switch Server' on home page; pos: bottom" title="" aria-expanded="false"><a href="https://www.snapaper.com/about" style="text-decoration:none;color:#999;letter-spacing: .5px;">V1.70</a></li>
+            <li class="nav-2-icon1" style="background: #fff;padding: 2px 10px;border: 1px solid #999;border-radius: 4px;font-size: .9rem;" uk-tooltip="title: When there is a problem with our service, you can choose to switch to another server node by clicking 'Switch Server' on home page; pos: bottom" title="" aria-expanded="false"><a href="https://www.snapaper.com/about" style="text-decoration:none;color:#999;letter-spacing: .5px;">V1.80</a></li>
         </ul>
     </div>
     </header>
