@@ -11,9 +11,11 @@
 				<link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
 				<script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
 				<script type="text/javascript" src="https://static.ouorz.com/uikit-icons.min.js"></script>
-				<script src="https://static.ouorz.com/jquery.min.js"></script>
-				<link href="style.css" rel="stylesheet">
+				<link href="https://www.snapaper.com/style.css" rel="stylesheet">
 				<link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_logo.ico" type="image/x-icon">
+				<script type="text/javascript" src="https://static.ouorz.com/vue.min.js"></script>
+				<script type="text/javascript" src="https://static.ouorz.com/axios.min.js"></script>
+				<script src="https://static.ouorz.com/jquery-3.3.1.min.js"></script>
 				<script>
 var _hmt = _hmt || [];
 (function() {

@@ -552,3 +552,16 @@ tr{
 	background-color: rgba(0, 0, 0, 0.02);
     color: #666;
 }
+
+.loading-line{
+	animation: twinkle 1s infinite;
+}
+
+@keyframes twinkle {
+            from {
+                opacity: .5;
+            }
+            to {
+                opacity: 1;
+            }
+}

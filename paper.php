@@ -1,85 +1,5 @@
-<?php
-//Composer 依赖
-require 'vendor/autoload.php';
-use QL\QueryList;
-
-/* 获取服务器源 */
-$com0 = 'https://papers.gceguide.com';
-$xyz1 = 'https://papers.gceguide.xyz';
-$xtr4 = 'https://xtremepapers.xyz';
-if(!isset($_COOKIE['snapaper_server'])){
-    $source = $com0;
-}else{
-	$source = $_COOKIE['snapaper_server'];
-	if($source == 0){
-    	$source = $com0;
-	}elseif($source == 1){
-		$source = $xyz1;
-	}elseif($source == 4){
-		$source = $xtr4;
-	}else{
-		$source = $com0;
-	}
-}
-/* 结束获取服务器源 */
-
-
-//获取学科代号(确定试卷代码)
-function get_sub_num($str){
-    $result = array();
-    preg_match_all("/([^(]+)$/",$str, $result); //匹配最后一个前括号，获取之后的内容
-    return rtrim($result[1][0], ")"); //删除最后一个后括号
-}
-
-/* Xtremepapers
- * 下载时需使用urlencode
- * 浏览时需使用原链接
- * 读取数据时需使用特殊格式的url(使用字符串替换)
- * 真是个磨人的小妖精
- */
-
-//判断参数是否输入
-if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
-    
-    $cate = $_GET['cate'];
-    $sub = $_GET['sub'];
-    
-    if($cate == 'A Levels' && $sub == 'Business Studies (9707)'){
-        $url = $com0.'/A%20Levels/Business%20Studies%20%20(9707)';//生成商业查询页面(下方格式爬取失败)
-    }elseif($cate == 'A Levels' && $sub == 'English - Language AS and A Level (9093)'){
-        $url = $com0.'/A%20Levels/English%20-%20Language%20AS%20and%20A%20Level%20%20(9093)/';//生成商业查询页面(下方格式爬取失败)
-    }else{
-        $url = $source.'/'.$cate.'/'.$sub;//生成查询页面
-    }
-    
-    
-    if($source == $xtr4){ //xtremepapers生成查询数据
-        	$find = array(' ','&');
-        	$replace = array('%2520','%2526');
-        	$cate = str_replace($find,$replace,$cate);
-        	$find = array(' ','(',')');
-            $replace = array('%2520','%2528','%2529');
-            $sub = str_replace($find,$replace,$sub);
-        $url = 'https://xtremepapers.xyz/papers/'.$cate.'/'.$sub.'/';//生成查询页面
-        $html = file_get_contents($url);
-    	$data = QueryList::html($html)->rules([
-    	'name' => ['.autoindex_td>a','text'],
-    	'url' => ['.autoindex_td>a','href']
-    	])->query()->getData();
-    	$user_data = $data->all(); //获取查询数据
-    }else{ //GCEGuide生成查询数据
-    	$html = file_get_contents($url);
-    	$data = QueryList::html($html)->rules([
-    	'name' => ['tr>td>a','text'],
-    	'url' => ['tr>td>a','href']
-    	])->query()->getData();
-    	$user_data = $data->all(); //获取查询数据
-    }
-?>
-
-
 <?php require 'header.php'; ?>
-
+<div id="view">
         
     
     <div class="papers-list-sticky" style="display:unset;width: 100%;border-radius: 0px;height: 40px;margin-left: 0px;text-align: center;z-index: 9998;padding-top: 15px;border-top: 2px solid #f0506e;" id="update"><p>We recommend using <b>Chrome</b> or some of the latest modern browsers for the best experience. <a href="https://www.google.cn/chrome/index.html" target="_blank">Click here to download Chrome</a>&nbsp;<a onclick="dismiss();" style="color: #f0506e;border: 1px solid #f0506e;padding: 4px 7px;border-radius: 4px;margin-left: 20px;"><svg width="19" height="19" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="margin-top: -3.5px;margin-right: 2px;"> <path fill="none" stroke="#f0506e" stroke-width="2" d="M16,16 L4,4"></path> <path fill="none" stroke="#f0506e" stroke-width="2" d="M16,4 L4,16"></path></svg>Dismiss</a></p></div>
@@ -88,7 +8,9 @@ if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
     <div class="papers-list-sticky" id="sticky">
         <div style="float: left;">
             <h3 style="margin-bottom: 0px;font-weight: 600;">Viewing</h3>
-            <p style="margin: 0px;font-weight: 300;margin-top: -3px;"><?php echo urldecode($_GET['sub']); ?></p></div><div style="float: right;padding-top: 10px;">
+            <p style="margin: 0px;font-weight: 300;margin-top: -3px;">{{ sub }}</p>
+        </div>
+        <div style="float: right;padding-top: 10px;">
                 <a onclick="download_all();" style="display: inline-block;">
                     <button class="uk-button uk-button-primary" style="border-radius: 5px;padding: 0px 15px;line-height: 35px;background-color: #0084FF;">Download All</button>
                 </a>
@@ -98,24 +20,19 @@ if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
         </div>
     </div>
     
+    <div v-if="loading" class=uk-container style="margin-top: 6%;"><div id=top class=sub-title-div style="margin-bottom: 60px; display: flex;"><div style="width: 73%;"><h1 class="sub-title-h1 loading-line" style="     width: 60%;     height: 50px;     background: #e1e2e3; "></h1><p class="sub-title-p loading-line" style="     background: #e7e8e9;     margin-top: 10px;     width: 80%;     height: 25px; "></p></div><div style="text-align: right; padding-top: 40px; display: flex; width: 27%;"><div><em class="back-btn loading-line" style="color: rgb(153, 153, 153);padding-left: 70px;"></em></div><div style="margin-left: 10px;"><a><em class="back-btn loading-line" style="color: rgb(30, 135, 240);padding-left: 70px;"></em></a></div></div></div><div style="margin-top: 2%;"><div id=dl style="margin-bottom: 10px;"><a><button class="uk-button uk-button-primary loading-line" style="border-radius: 5px;width: 16%;height: 40px;background: #eee;"></button></a><a><button class="uk-button uk-button-danger loading-line" style="border-radius: 5px;margin-left: 0.5%;width: 16%;height: 40px;background: #eee;"></button></a></div><div style="     margin-top: 60px; "><div class="loading-line" style="     width: 100%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; "></div><div class="loading-line" style="     width: 90%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; "></div><div style="     width: 80%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; " class="loading-line"></div><div class="loading-line" style="     width: 90%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; "></div><div style="     width: 90%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; " class="loading-line"></div><div style="     width: 100%;     height: 40px;     background: #f1f2f3;     margin-bottom: 20px; " class="loading-line"></div></div></div></div>
     
     
-    <div class="uk-container" style="margin-top: 6%;">
+    
+    <div class="uk-container" style="margin-top: 6%;" v-if="loading_view">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;" id="top">
     <div style="width: 73%;">
-    	<?php if($source == $xtr4){ //xtremepapers时cate与sub格式不同,需要urldecode ?>
-        <h1 class="sub-title-h1">
-        	<b style="font-size: 2rem;font-weight: 300;color: #888;"><?php echo $_GET['cate']; ?></b>
-        	<br/><?php echo urldecode($_GET['sub']); ?>
-        </h1>
-        <?php }else{ ?>
-        <h1 class="sub-title-h1"><?php echo $_GET['cate']; ?> | <?php echo $_GET['sub']; ?></h1>
-        <?php } ?>
-    	<p class="sub-title-p">Made by Snapaper sourced from GCE Guide/Xtremepapers</p>
+        <h1 class="sub-title-h1">{{ sub + ' | ' + cate }}</h1>
+    	<p class="sub-title-p">Made by Snapaper sourced from GCE Guide</p>
     </div>
     <div style="text-align: right;padding-top: 40px;display: flex;width:27%">
     <div>
-    	<em class="back-btn" style="color: #999;"><?php echo count($user_data) - 1; ?> Papers</em>
+    	<em class="back-btn" style="color: #999;">{{ count }} Papers</em>
 	</div>
 	<div style="margin-left: 10px;">
 		<a onclick="history.go(-1);">
@@ -193,82 +110,26 @@ function live(url){
 </script>
 
 
-<?php
-    if(!empty($user_data)){ //开始读取数据
-    for($i=0;$i<count($user_data);$i++){ //循环获取数据
-		if($user_data[$i]['name'] != 'error_log' && $user_data[$i]['name'] != '
-Parent Directory'){ //排除一些特殊名称的试卷
-			if($_COOKIE['snapaper_server'] == 4){ //xtremepapers时列表项不同 ?>
-				
-				
-		<tr>
-            <td class="papers-list-td-left">
-            	<a href="download?filename=<?php echo 'https://xtremepapers.xyz'.urlencode($user_data[$i]['url']); ?>" id="<?php echo $i; ?>">
-            		<p>
-            			<?php if(strpos($user_data[$i]['name'],'pdf')!==false){ ?>
-            				<em class="file-pdf-btn">PDF</em>
-            			<?php }elseif(strpos($user_data[$i]['name'],'mp3')!==false){?>
-            				<em class="file-mp3-btn">MP3</em>
-            			<?php } ?>
-            			<?php echo $user_data[$i]['name']; ?>
-            		</p>
-            	</a>
-            </td>
-			<td class="papers-list-td-right">
-				<p>
-					<button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
-					<button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo 'https://xtremepapers.xyz'.urlencode($user_data[$i]['url']); ?>')">Download</button>
-					<a onclick="live('<?php echo 'https://xtremepapers.xyz'.$user_data[$i]['url']; ?>');"><button class="papers-list-td-btn3">LiveView</button></a>
-                    <?php if(strpos($user_data[$i]['name'],'qp')!==false && strpos($user_data[$i]['name'],'2_2')==false){ //判断ms或qp?>
-                    	<a onclick="live('<?php echo 'https://xtremepapers.xyz'.strtr($user_data[$i]['url'],array('qp'=>'ms')); ?>');"><button class="papers-list-td-btn2" style="color: #fbbd01;">Mark Scheme</button></a>
-                    <?php }elseif(strpos($user_data[$i]['name'],'ms')!==false && strpos($user_data[$i]['name'],'+')==false && strpos($user_data[$i]['name'],'2_2')==false){ ?>
-                    	<a onclick="live('<?php echo 'https://xtremepapers.xyz'.strtr($user_data[$i]['url'],array('qp'=>'ms')); ?>');"><button class="papers-list-td-btn2" style="color: #6d3cbd;letter-spacing: -1.4px;">Question Paper</button></a>
-                    <?php }else{ ?>
-                    	<button class="papers-list-td-btn2" style="color: #999;letter-spacing: 1.1px;">© Snapaper</button>
-                    <?php } ?>
-                </p>
-            </td>
-        </tr>
-        
-        
-<?php		}else{ //GCEGuide 时
-	
-				if($_COOKIE['snapaper_server'] == 0 || !isset($_COOKIE['snapaper_server'])){
-    				//GCEGuide服务器不同时的试卷链接格式不同
-    				$link = '/'; //.com 时
-    			}else{
-    				$link = ''; //.xyz 时
-    				$url = $source;
-    			}
-    			
-?>
-        <tr>
-            <td class="papers-list-td-left"><a href="download?filename=<?php echo $url.$link.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
+        <tr v-for="(paper,index) in papers">
+        	<template v-if="!!paper.name">
+            <td class="papers-list-td-left"><a :href="list_a(paper.url)" :id="index"><p>{{ paper.name }}</p></a></td>
             <td class="papers-list-td-right">
                 <p>
-                    <button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
-                    <button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo $url.$link.$user_data[$i]['url']; ?>')">Download</button>
-                    <a onclick="live('<?php echo $url.$link.$user_data[$i]['url']; ?>');"><button class="papers-list-td-btn3">LiveView</button></a>
-                    <?php if(strpos($user_data[$i]['name'],'qp')!==false && strpos($user_data[$i]['name'],'2_2')==false){ //判断ms或qp?>
-                    	<a onclick="live('<?php echo $url.$link.strtr($user_data[$i]['url'],array('qp'=>'ms')); ?>');"><button class="papers-list-td-btn2" style="color: #fbbd01;">Mark Scheme</button></a>
-                    <?php }elseif(strpos($user_data[$i]['name'],'ms')!==false && strpos($user_data[$i]['name'],'+')==false && strpos($user_data[$i]['name'],'2_2')==false){ ?>
-                    	<a onclick="live('<?php echo $url.$link.strtr($user_data[$i]['url'],array('ms'=>'qp')); ?>');"><button class="papers-list-td-btn2" style="color: #6d3cbd;letter-spacing: -1.4px;">Question Paper</button></a>
-                    <?php }else{ ?>
-                    	<button class="papers-list-td-btn2" style="color: #777;letter-spacing: 1.1px;">© Snapaper</button>
-                    <?php } ?>
+                    <button class="papers-list-td-btn1" :onclick="'add_items('+index+')'" :id="'btn'+index">Add to List</button>
+                    <button class="papers-list-td-btn2" @click="download_btn(paper.url)">Download</button>
+                    <a @click="live_btn(paper.url)"><button class="papers-list-td-btn3">LiveView</button></a>
+                    <a v-if="qp(paper.name)" @click="mark_btn(paper.url)"><button class="papers-list-td-btn2" style="color: #fbbd01;">Mark Scheme</button></a>
+        			<a v-else-if="ms(paper.name)" @click="qp_btn(paper.url)"><button class="papers-list-td-btn2" style="color: #6d3cbd;letter-spacing: -1.4px;">Question Paper</button></a>
+        			<button v-else class="papers-list-td-btn2" style="color: #999;letter-spacing: 1.1px;">© Snapaper</button>
                 </p>
             </td>
+            </template>
         </tr>
     
-
-    
-<?php }}}?>
-
-<?php } ?>
 </tbody>
 </table>
 
-<div class="uk-placeholder uk-text-center" id="bottom">Paper resources are from GCE Guide/Xtremepapers, no one has the right to change and share them</div>
+<div class="uk-placeholder uk-text-center" id="bottom">Paper resources are from GCE Guide, no one has the right to change and share them</div>
 
 <input type="hidden" id="download_items">
 
@@ -280,19 +141,161 @@ Parent Directory'){ //排除一些特殊名称的试卷
     <svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>
 </a>
 
-
-
-<?php } ?>
-
     </div>
 </div>
-
+</div>
 <script>
 	//判断是否为Chrome,删除提示
 var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
 if(isChrome){
     dismiss(); //chrome浏览器取消显示提示
 }
+
+$.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return $.getUrlVars()[name];
+  }
+});
+
+</script>
+
+<script>
+
+window.onload = function(){ //避免爆代码
+
+var cate_get = decodeURIComponent($.getUrlVar('cate'));
+var sub_get = decodeURIComponent($.getUrlVar('sub'));
+
+var get = new Vue({
+    el: '#view',
+    data: {
+        papers: null,
+        cate: cate_get,
+        sub: sub_get,
+        loading_view: 0,
+        loading: 1,
+        count: 0,
+        <?php if($_COOKIE['snapaper_server'] == 0 || !isset($_COOKIE['snapaper_server'])){ ?>
+    	link: 0
+    	<?php }else{ ?>
+    	link: 1
+    	<?php } ?>
+    },
+    mounted() {
+        axios.get('<?php echo 'https://www.snapaper.com/vue/papers'.'?'.$_SERVER['QUERY_STRING']; ?>')
+        .then(response => {
+            this.papers = response.data;
+            this.count = response.data.count;
+        }).finally(() => {
+            this.loading = false;
+            this.loading_view = true;
+        });
+    },
+    methods: {
+    	qp: function(name){
+    		if(!!name && name.toString().indexOf('qp') > -1 && name.toString().indexOf('2_2') <= -1){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	},
+    	ms: function(name){
+    		if(!!name && name.toString().indexOf('ms') > -1 && name.toString().indexOf('2_2') <= -1 && name.toString().indexOf('+') <= -1){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	},
+    	replace: function(type,name){
+    		if(type == 'qp'){
+    			return name.replace('qp','ms');
+    		}else{
+    			return name.replace('ms','qp');
+    		}
+    	},
+    	download_btn : function(name){
+    		this.link ? downloadFile('download?filename=https://papers.gceguide.xyz' + name) : downloadFile('download?filename=https://papers.gceguide.com/' + this.cate + '/' + this.sub + '/' + name)
+    	},
+    	live_btn : function(name){
+    		this.link ? live('https://papers.gceguide.xyz' + name) : live('https://papers.gceguide.com/'+ this.cate + '/' + this.sub + '/' + name)
+    	},
+    	mark_btn : function(name){
+    		this.link ? live('https://papers.gceguide.xyz' + name.replace('qp','ms')) : live('https://papers.gceguide.com/'+ this.cate + '/' + this.sub + '/' + name.replace('qp','ms'));
+    	},
+    	qp_btn : function(name){
+    		this.link ? live('https://papers.gceguide.xyz' + name.replace('ms','qp')) : live('https://papers.gceguide.com/'+ this.cate + '/' + this.sub + '/' + name.replace('ms','qp'));
+    	},
+    	list_a: function(name){
+    		return this.link ? 'download?filename=https://papers.gceguide.xyz' + name : 'download?filename=https://papers.gceguide.com/' + this.cate + '/' + this.sub + '/' + name
+    	}
+    }
+    });
+    
+}
+
 </script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

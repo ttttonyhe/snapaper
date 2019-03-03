@@ -57,7 +57,7 @@ function set_server(source){
         UIkit.notification({message: 'Succeed', status: 'success'});
         setTimeout("location.reload()",1000);
     }else if( c_source == 1 ){
-    	setCookie('snapaper_server',4);
+    	setCookie('snapaper_server',0);
     	$('#switch')[0].innerHTML = 'loading';
         UIkit.notification({message: 'Succeed', status: 'success'});
     	setTimeout("location.reload()",1000);
@@ -129,7 +129,7 @@ function set_server(source){
                 <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">About Us</h3>
                 <p style="margin: 0px;margin-left: 3px;">Information about this website...</p>
             </div>
-            <a href="about.html" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
+            <a href="about" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
     
     
