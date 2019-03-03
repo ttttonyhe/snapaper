@@ -6,12 +6,9 @@ Past Paper Resources From GCE Guide | Made with ![Love](https://static.ouorz.com
 ### Usage
 
 #### COOKIES
-Key : snapaper_server
-
-<br/>
-
-+ Value : 1 for gceguide.com
-+ Value : 0 for gecguide.xyz
++ ** Key : ** snapaper_server
++ ** Value : 1 ** for gceguide.com
++ ** Value : 0 ** for gecguide.xyz
 
 <br/>
 
