@@ -65,9 +65,14 @@ var _hmt = _hmt || [];
                 About
                 </a>          
           </li>
-                    <li>
+          <li>
               <a class="cap-nav-a" href="/donate">
                 Donation
+                </a>          
+          </li>
+          <li>
+              <a class="cap-nav-a" href="https://github.com/HelipengTony/snapaper/blob/master/docs/API.md">
+                API
                 </a>          
           </li>
           
