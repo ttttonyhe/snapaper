@@ -11,7 +11,7 @@
 				<link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
 				<script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
 				<script type="text/javascript" src="https://static.ouorz.com/uikit-icons.min.js"></script>
-				<link href="https://www.snapaper.com/style.css" rel="stylesheet">
+				<link href="css/style.css" rel="stylesheet">
 				<link rel="Shortcut Icon" href="https://static.ouorz.com/snapaper_logo.ico" type="image/x-icon">
 				<script type="text/javascript" src="https://static.ouorz.com/vue.min.js"></script>
 				<script type="text/javascript" src="https://static.ouorz.com/axios.min.js"></script>

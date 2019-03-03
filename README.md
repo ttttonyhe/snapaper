@@ -3,7 +3,10 @@ Built for International Students | Made with ![Love](https://static.ouorz.com/he
 
 <br/>
 
+### Thumbnail
+
 ![Thumbnail1](https://i.loli.net/2019/02/17/5c693e385b0c0.png)
+<br/>
 ![Thumbnail2](https://i.loli.net/2019/02/17/5c693f373b1ba.png)
 
 <br/>
@@ -44,6 +47,9 @@ First version released
 3. Added a Switch Server button
 4. Paper display page redesigned 
 
+#### V0.18
+1. Reuilt category/paper pages using Vue.js
+
 <br/>
 
 ### Copyrights
@@ -53,5 +59,28 @@ All Contents & names of this website are assets of owner, protected by law and p
 
 ### Technical details
 This website (https://www.snapaper.com) does not have a database, all content data comes from GCE Guide (http://www.gceguide.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) website, all the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) to provide a convenient download extension. This is 100% a non-profit website.
-<br/><br/>
-Many thanks to [QueryList](https://querylist.cc)
+
+<br/>
+
+### Environment
++ [QueryList](https://querylist.cc)
++ Composer
++ Php 7.x
++ Vue 2.x
+
+<br/>
+
+### API
+```
+/* Request */
+// Cates
+COOKIES 'snapaper_server' => '1/0'
+GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
+
+// Papers
+COOKIES 'snapaper_server' => '1/0'
+GET https://www.snapaper.com/vue/papers?cate=IGCSE/A Levels/O Levels&sub=Art and Design (0400)
+
+/* Return */
+DataType:JSON
+```

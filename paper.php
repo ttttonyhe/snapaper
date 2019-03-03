@@ -44,7 +44,7 @@
     </div>
     <div style="margin-top:2%">
 
-<script src="ux.js"></script>
+<script src="src/ux.js"></script>
 
 <div style="margin-bottom:10px" id="dl">
     <a onclick="download_all();">
