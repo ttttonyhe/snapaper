@@ -3,7 +3,19 @@ Past Paper Resources From GCE Guide | Made with ![Love](https://static.ouorz.com
 
 <br/>
 
-### Request
+### Usage
+
+#### COOKIES
+<br/>
+key : snapaper_server
+<br/>
+value :
+<br/>
++ 1 for gceguide.com
++ 0 for gecguide.xyz
+
+<br/>
+
 #### Cates
 ```
 //Request
@@ -43,3 +55,8 @@ GET https://www.snapaper.com/vue/papers?cate=IGCSE/A Levels/O Levels&sub=Art and
     }
 }
 ```
+
+### Notice
++ Free of charge
++ No guarantee for stability
++ The server is located in Beijing, China
