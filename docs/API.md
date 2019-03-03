@@ -13,12 +13,12 @@ Past Paper Resources From GCE Guide | Made with ![Love](https://static.ouorz.com
 <br/>
 
 #### Cates
-```
+``` php
 //Request
 COOKIES 'snapaper_server' => '1/0'
 GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
 ```
-```
+``` json
 //ExampleResponse
 {
     "0": {
@@ -33,12 +33,12 @@ GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
 <br/>
 
 #### Papers
-```
+``` php
 //Request
 COOKIES 'snapaper_server' => '1/0'
 GET https://www.snapaper.com/vue/papers?cate=IGCSE/A Levels/O Levels&sub=Art and Design (0400)
 ```
-```
+``` json
 //ExampleResponse
 {
     "0": {
