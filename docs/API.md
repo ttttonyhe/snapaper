@@ -13,13 +13,13 @@ Past Paper Resources From GCE Guide | Made with ![Love](https://static.ouorz.com
 <br/>
 
 #### Cates
+Request
 ``` php
-//Request
 COOKIES 'snapaper_server' => '1/0'
-GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
+GET https://www.snapaper.com/vue/cates?cate=:cate
 ```
+Response
 ``` json
-//ExampleResponse
 {
     "0": {
         "name": "Accounting (9706)"
@@ -33,13 +33,13 @@ GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
 <br/>
 
 #### Papers
+Request
 ``` php
-//Request
 COOKIES 'snapaper_server' => '1/0'
-GET https://www.snapaper.com/vue/papers?cate=IGCSE/A Levels/O Levels&sub=Art and Design (0400)
+GET https://www.snapaper.com/vue/papers?cate=:cate&sub=:subject
 ```
+Response
 ``` json
-//ExampleResponse
 {
     "0": {
         "name": "9609_m16_gt.pdf",
