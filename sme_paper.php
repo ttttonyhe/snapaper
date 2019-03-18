@@ -277,7 +277,7 @@ if(isChrome){
 
 		<tr>
 			<td class="papers-list-td-left"><a href="download?filename=<?php echo 'https://www.savemyexams.co.uk'.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
-			<td class="papers-list-td-right">
+			<td class="papers-list-td-right" style="width:480px !important">
 				<p>
 					<button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
 					<button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo 'https://www.savemyexams.co.uk'.$user_data[$i]['url']; ?>')">Download</button>

@@ -4,7 +4,7 @@
 	<div v-if="loading" class="uk-container loading-line" style="margin-top: 6%; padding-left: 11vh;"><div class=sub-title-div style="margin-bottom: 60px; display: flex;"><div style="width: 73%;"><h1 class=sub-title-h1 style="     height: 45px;     width: 80%;     background: #e1e2e3; "></h1><p class=sub-title-p style="     margin-top: 15px;     width: 60%;     height: 30px;     background: #eee; "></p></div><div style="text-align: right; padding-top: 40px; display: flex; width: 27%;"><div><em class=back-btn style="color: rgb(153, 153, 153);padding-left: 70px;"></em></div><div style="margin-left: 10px;"><a onclick="history.go(-1);"><em class=back-btn style="color: rgb(30, 135, 240);padding-left: 70px;"></em></a></div></div></div><div id=display_style></div><div id=list class=sublist><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none;     padding-bottom: 150px; "></div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none; "></div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none; "></div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none;     padding-bottom: 150px; "></div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none; "></div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card uk-scrollspy-inview " style="     border: none;     background: #f1f2f3;     box-shadow: none; "></div></div></div>
 	
 	
-    <div v-if="loading_view" class="uk-container" style="margin-top: 6%;padding-left: 11vh;">
+    <div v-if="loading_view" :class="container" style="margin-top: 6%;padding-left: 11vh;opacity:0;">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;">
     <div style="width: 73%;">
         <h1 class="sub-title-h1">{{ cate }}</h1>
@@ -26,8 +26,8 @@
     <div class="sublist" id="list">
     	
     	<div v-for="categ in categs" class="uk-card uk-card-default uk-card-hover uk-card-body index-cate-card" v-if="!!categ.name">
-            	<h3 class="uk-card-title index-cate-h3">{{ categ.name }}</h3>
-            	<a :href="'/paper?cate='+ cate +'&sub=' + categ.name"><p class="item-guide">Browse All Papers</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            	<h3 class="uk-card-title index-cate-h3" v-html="categ.name"></h3>
+            	<a :href="'/paper?cate='+ cate +'&sub=' + categ.name.replace('amp;','')"><p class="item-guide">Browse All Papers</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
         </div>
 
 <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="width: 97%;margin-left: 2%;padding: 40px 30px;display: inline-block;border: 3px solid #999;border-radius: 5px;transition: all .3s;margin-bottom: 10%;">
@@ -89,20 +89,22 @@ var get = new Vue({
         loading: 1,
         count: 0,
         <?php if($_COOKIE['snapaper_server'] == 0 || !isset($_COOKIE['snapaper_server'])){ ?>
-    	link: 0
+    	link: 0,
     	<?php }else{ ?>
-    	link: 1
+    	link: 1,
     	<?php } ?>
+    	container : 'uk-container none_container'
     },
     mounted() {
         axios.get('<?php echo 'https://www.snapaper.com/vue/cates'.'?'.$_SERVER['QUERY_STRING']; ?>')
         .then(response => {
             this.categs = response.data;
             this.count = response.data.count;
-        }).finally(() => {
-            this.loading = false;
+        }).then(()=>{
+        	this.loading = false;
             this.loading_view = true;
-        });
+            this.container = 'uk-container display-container';
+        })
     },
     methods: {
     	cate_name: function(name){

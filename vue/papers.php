@@ -45,5 +45,6 @@ if( !empty($_GET['cate']) && !empty($_GET['sub']) ) {
 <?php
     if(!empty($user_data)){ //开始读取数据
     	$user_data['count'] = count($user_data);
+    	header('Access-Control-Allow-Origin: *');
     	echo json_encode($user_data);
 }} ?>

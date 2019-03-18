@@ -80,8 +80,8 @@ function set_server(source){
     </div>
     <div>
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
-            <h3 class="uk-card-title index-cate-h3">One Step&nbsp;<span class="uk-label uk-label-success nav-title-v">Extension</span></h3>
-            <a href="/find"><p class="item-guide">Find a Paper</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next" style="display: inline-block;"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            <h3 class="uk-card-title index-cate-h3">Save My Exams&nbsp;<span class="uk-label uk-label-success nav-title-v">Beta</span></h3>
+            <a href="/sme_cate"><p class="item-guide">Browse All Subjects</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
         </div>
         
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
@@ -104,10 +104,10 @@ function set_server(source){
     
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #03A9F4;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;">
             <div style="   float: left;">
-                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Save My Exam&nbsp;<span class="uk-label uk-label-success nav-title-v">Beta</span></h3>
-                <p style="margin: 0px;margin-left: 3px;">Free Practice Problem...</p>
+                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">One Step&nbsp;<span class="uk-label uk-label-success nav-title-v">Extension</span></h3>
+                <p style="margin: 0px;margin-left: 3px;">A quicker way to find a paper...</p>
             </div>
-            <a href="/sme_cate" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
+            <a href="/find" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #fbbd01;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
             <div style="   float: left;">
@@ -133,7 +133,7 @@ function set_server(source){
     </div>
     
     
-    <p class="index-copy">©2018-2019 Snapaper | Made with <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill="none" stroke="#ee561d" stroke-width="1.03" d="M10,4 C10,4 8.1,2 5.74,2 C3.38,2 1,3.55 1,6.73 C1,8.84 2.67,10.44 2.67,10.44 L10,18 L17.33,10.44 C17.33,10.44 19,8.84 19,6.73 C19,3.55 16.62,2 14.26,2 C11.9,2 10,4 10,4 L10,4 Z"></path></svg> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | Sourced from <b><a href="https://www.gceguide.com" target="_blank" style="color:#7c7c7c">GCE Guide</a>/<a href="https://www.xtremepapers.xyz" target="_blank" style="color:#7c7c7c">Xtremepapers</a></b>&nbsp;<a href="//www.dmca.com/Protection/Status.aspx?ID=d417d85d-5eca-456c-a894-c2367440c02b" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca-badge-w100-5x1-01.png?ID=d417d85d-5eca-456c-a894-c2367440c02b"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></p>
+    <p class="index-copy">©2018-2019 Snapaper | Made with <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <path fill="none" stroke="#ee561d" stroke-width="1.03" d="M10,4 C10,4 8.1,2 5.74,2 C3.38,2 1,3.55 1,6.73 C1,8.84 2.67,10.44 2.67,10.44 L10,18 L17.33,10.44 C17.33,10.44 19,8.84 19,6.73 C19,3.55 16.62,2 14.26,2 C11.9,2 10,4 10,4 L10,4 Z"></path></svg> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | Sourced from <b><a href="https://www.gceguide.com" target="_blank" style="color:#7c7c7c">GCE Guide</a></b>&nbsp;<a href="//www.dmca.com/Protection/Status.aspx?ID=d417d85d-5eca-456c-a894-c2367440c02b" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca-badge-w100-5x1-01.png?ID=d417d85d-5eca-456c-a894-c2367440c02b"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></p>
 </div>
     </body>
 </html>

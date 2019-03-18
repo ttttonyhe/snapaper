@@ -565,3 +565,11 @@ tr{
                 opacity: 1;
             }
 }
+
+.display-container{
+	opacity: 1 !important;
+}
+
+.none-container{
+	opacity: 0 !important;
+}

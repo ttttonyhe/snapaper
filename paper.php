@@ -24,7 +24,7 @@
     
     
     
-    <div class="uk-container" style="margin-top: 6%;" v-if="loading_view">
+    <div :class="container" style="margin-top: 6%;opacity:0;" v-if="loading_view">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;" id="top">
     <div style="width: 73%;">
         <h1 class="sub-title-h1">{{ sub + ' | ' + cate }}</h1>
@@ -44,7 +44,7 @@
     </div>
     <div style="margin-top:2%">
 
-<script src="src/ux.js"></script>
+<script src="ux.js"></script>
 
 <div style="margin-bottom:10px" id="dl">
     <a onclick="download_all();">
@@ -52,6 +52,9 @@
     </a>
     <a onclick="download_list();">
         <button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download List    </button>
+    </a>
+    <a onclick="open_search();">
+        <button class="uk-button uk-button-default" style="border-radius: 5px;margin-left: 0.5%;">Search</button>
     </a>
 </div>
 
@@ -111,7 +114,7 @@ function live(url){
 
 
         <tr v-for="(paper,index) in papers">
-        	<template v-if="!!paper.name">
+        	<template v-if="!!paper.name && paper.name !== 'error_log'">
             <td class="papers-list-td-left"><a :href="list_a(paper.url)" :id="index"><p>{{ paper.name }}</p></a></td>
             <td class="papers-list-td-right">
                 <p>
@@ -143,6 +146,16 @@ function live(url){
 
     </div>
 </div>
+
+<div id="search_div" style="opacity:0;z-index:-100;position: fixed;padding-top: 20vh;top: 0px;width: 100%;height: 100vh;background: rgb(255, 255, 255);overflow-y: auto;">
+	<div style="width:40%;margin:0 auto">
+		<h2 style="margin: 0px;">Search</h2><p style="margin: 0px;font-weight: 300;color: #999;margin-bottom: 20px;">Search by paper name</p>
+		<button onclick="close_search()" class="uk-button uk-button-default" style="float: right;margin-top: -70px;margin-right: -20px;">Close</button>
+		<input v-model="search_key" placeholder="Search by paper name" v-on:input="search_btn" style="border: 2px solid #eee;padding: 10px 10px;border-radius: 4px;font-size: 1rem;color: #555;margin-bottom: 15px;width:100%"/>
+    	<div v-for="s in searched" style="padding: 8px 10px;border: 1px solid #eee;width: 100%;margin-bottom:5px"><a :href="link ? 'https://papers.gceguide.xyz' + papers[s].name : 'https://papers.gceguide.com/'+ cate + '/' + sub + '/' + papers[s].name" target="_blank" style="color: #777;font-weight: 300;text-decoration: none;letter-spacing: 0.5px;" v-html="papers[s].name"></a></div>
+    </div>
+</div>
+
 </div>
 <script>
 	//判断是否为Chrome,删除提示
@@ -168,16 +181,28 @@ $.extend({
   }
 });
 
+var open_search = function(){
+	$('#search_div').css({'opacity':'1','z-index':'100'});
+}
+
+var close_search = function(){
+	$('#search_div').css({'opacity':'0','z-index':'-100'});
+}
+
+
 </script>
 
 <script>
 
-window.onload = function(){ //避免爆代码
+var search = new FlexSearch({
+	encode: "icase",
+    tokenize: "full"
+});
 
 var cate_get = decodeURIComponent($.getUrlVar('cate'));
 var sub_get = decodeURIComponent($.getUrlVar('sub'));
 
-var get = new Vue({
+var get_papers = new Vue({
     el: '#view',
     data: {
         papers: null,
@@ -187,20 +212,27 @@ var get = new Vue({
         loading: 1,
         count: 0,
         <?php if($_COOKIE['snapaper_server'] == 0 || !isset($_COOKIE['snapaper_server'])){ ?>
-    	link: 0
+    	link: 0,
     	<?php }else{ ?>
-    	link: 1
+    	link: 1,
     	<?php } ?>
+    	container : 'uk-container none_container',
+    	searched : [],
+    	search_key : null
     },
     mounted() {
         axios.get('<?php echo 'https://www.snapaper.com/vue/papers'.'?'.$_SERVER['QUERY_STRING']; ?>')
         .then(response => {
             this.papers = response.data;
             this.count = response.data.count;
-        }).finally(() => {
-            this.loading = false;
+        }).then(()=>{
+        	this.loading = false;
             this.loading_view = true;
-        });
+            this.container = 'uk-container display-container';
+            for(var i_k=0;i_k<this.count;i_k++){
+    			search.add(i_k,this.papers[i_k].name);
+    		}
+        })
     },
     methods: {
     	qp: function(name){
@@ -217,13 +249,6 @@ var get = new Vue({
     			return false;
     		}
     	},
-    	replace: function(type,name){
-    		if(type == 'qp'){
-    			return name.replace('qp','ms');
-    		}else{
-    			return name.replace('ms','qp');
-    		}
-    	},
     	download_btn : function(name){
     		this.link ? downloadFile('download?filename=https://papers.gceguide.xyz' + name) : downloadFile('download?filename=https://papers.gceguide.com/' + this.cate + '/' + this.sub + '/' + name)
     	},
@@ -238,11 +263,13 @@ var get = new Vue({
     	},
     	list_a: function(name){
     		return this.link ? 'download?filename=https://papers.gceguide.xyz' + name : 'download?filename=https://papers.gceguide.com/' + this.cate + '/' + this.sub + '/' + name
+    	},
+    	search_btn : function(){
+    		this.searched = search.search(this.search_key);
     	}
     }
     });
     
-}
 
 </script>
     </body>
