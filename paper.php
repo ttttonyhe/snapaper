@@ -54,7 +54,7 @@
         <button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download List    </button>
     </a>
     <a onclick="open_search();">
-        <button class="uk-button uk-button-default" style="border-radius: 5px;margin-left: 0.5%;">Search</button>
+        <button class="uk-button uk-button-secondary" style="border-radius: 5px;margin-left: 0.5%;">Search</button>
     </a>
 </div>
 
