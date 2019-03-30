@@ -1,5 +1,5 @@
-# Snapaper
-Built for International Students | Made with ![Love](https://static.ouorz.com/heart_16px_501363_easyicon.net.png) by TonyHe
+<p align="center"><img src="https://i.loli.net/2019/03/30/5c9f75253b256.png" width="50%"></p>
+<p align="center">Built for International Students | Made with :heart: by TonyHe</p>
 
 <br/>
 
@@ -71,16 +71,4 @@ This website (https://www.snapaper.com) does not have a database, all content da
 <br/>
 
 ### API
-```
-/* Request */
-// Cates
-COOKIES 'snapaper_server' => '1/0'
-GET https://www.snapaper.com/vue/cates?cate=IGCSE/A Levels/O Levels
-
-// Papers
-COOKIES 'snapaper_server' => '1/0'
-GET https://www.snapaper.com/vue/papers?cate=IGCSE/A Levels/O Levels&sub=Art and Design (0400)
-
-/* Return */
-DataType:JSON
-```
+[Documentation](https://github.com/HelipengTony/snapaper/blob/master/docs/API.md)
