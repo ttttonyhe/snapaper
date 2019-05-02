@@ -48,6 +48,10 @@ First version released
 ### V0.18
 1. Reuilt category/paper pages using Vue.js
 
+### V0.182
+1. Added support to Download Mode switching
+2. Added new category —— SaveMyExams
+
 <br/>
 
 ## Copyrights

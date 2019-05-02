@@ -55,6 +55,7 @@ Response
 <br/>
 
 ### Notice
++ We've set Access-Control-Allow-Origin: *
 + Free of charge
 + No guarantee for stability
 + The server is located in Beijing, China
