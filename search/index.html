@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>西安博杨 | 数据搜索</title>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/vue/2.6.4/vue.min.js"></script>
+        <script src="https://cdn.bootcss.com/FlexSearch/0.6.2/flexsearch.min.js"></script>
+        <script>
+        Vue.config.devtools = true
+        </script>
+        <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+        <script type="text/javascript" src="element/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="element/index.css">
+    </head>
+    
+    <body>
+        <div id="view" style="opacity:0">
+            <div v-if="loading" v-loading="loading" style="margin:35vh 0px">
+            </div>
+            <div v-else>
+                <div style="width: 70vh;margin: 20vh auto;">
+                    <div style="text-align: center;">
+                        <img src="https://www.xianboyang.com/file.php?f=201812/f_fb1a430725526a92984b4e6a0e3c5ced.jpg" style="width: 100%;margin-bottom: 20px;">
+                        <div style="display:flex">
+                        	<el-input v-model.trim="key" placeholder="按编号数据搜索" v-on:input="s"></el-input>
+                        	<a href="https://www.xianboyang.com" style="margin-left: 2%;"><el-button type="primary">返回官网</el-button></a>
+                        </div>
+                    </div>
+                    <div>
+                        <el-card shadow="hover" v-for="post in searched" style="margin: 10px 0;">
+                            <div style="width: 80%;display: inline-block;">
+                                <a :href="'https://www.xianboyang.com'+posts[post].url" v-html="posts[post].title" style="font-size: 1.6rem;text-decoration: none;color: #555;"></a>
+                            </div>	<a :href="'https://www.xianboyang.com'+posts[post].url" style="text-decoration: none;float: right;font-size: 1.3rem;color: #03A9F4;margin-top: 2.5px;">查看详情 &gt;</a>
+
+                        </el-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="static/main.js"></script>
+    </body>
+
+</html>

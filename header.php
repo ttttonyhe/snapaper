@@ -7,6 +7,7 @@
 				<meta name="description" content="Resources for Cambridge Examinations">
 				<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,
 		width=device-width,initial-scale=1.0" />
+				<meta name="google-site-verification" content="RT8plbzqYHzb-o-LH6e5S8SfYtHm7yVAiPqhVNr_dYI" />
 				<link href="https://static.zeo.im/uikit.min.css" rel="stylesheet">
 				<link href="https://static.zeo.im/uikit-rtl.min.css" rel="stylesheet">
 				<script type="text/javascript" src="https://static.zeo.im/uikit.min.js"></script>
@@ -16,7 +17,8 @@
 				<script type="text/javascript" src="https://static.ouorz.com/vue.min.js"></script>
 				<script type="text/javascript" src="https://static.ouorz.com/axios.min.js"></script>
 				<script src="https://static.ouorz.com/jquery-3.3.1.min.js"></script>
-				<script src="https://cdn.bootcss.com/FlexSearch/0.6.2/flexsearch.min.js"></script>
+				<!-- <script src="https://cdn.bootcss.com/FlexSearch/0.6.2/flexsearch.min.js"></script> -->
+				<script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
 				<script>
 var _hmt = _hmt || [];
 (function() {

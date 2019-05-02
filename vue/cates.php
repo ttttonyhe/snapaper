@@ -32,6 +32,7 @@ if(!isset($_COOKIE['snapaper_server'])){
     $user_data = $data->all(); //获取查询数据
     
     $user_data['count'] = count($user_data);
+    header('Access-Control-Allow-Origin: *');
     echo json_encode($user_data);
     
 }

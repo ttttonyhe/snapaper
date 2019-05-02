@@ -54,20 +54,28 @@ function set_server(source){
     if( c_source == 0 || c_source == 3 ){
         setCookie('snapaper_server',1);
         $('#switch')[0].innerHTML = 'loading';
-        UIkit.notification({message: 'Succeed', status: 'success'});
+        swal("Success", "You've swtiched to Server 2", "success", {
+        	button : false
+        });
         setTimeout("location.reload()",1000);
     }else if( c_source == 1 ){
     	setCookie('snapaper_server',0);
     	$('#switch')[0].innerHTML = 'loading';
-        UIkit.notification({message: 'Succeed', status: 'success'});
+        swal("Success", "You've swtiched to Server 1", "success", {
+        	button : false
+        });
     	setTimeout("location.reload()",1000);
     }else if( c_source == 4 ){
     	setCookie('snapaper_server',0);
     	$('#switch')[0].innerHTML = 'loading';
-        UIkit.notification({message: 'Succeed', status: 'success'});
+        swal("Success", "You've swtiched to Server 1", "success", {
+        	button : false
+        });
     	setTimeout("location.reload()",1000);
     }else{
-    	UIkit.notification({message: 'Illegal Request', status: 'danger'});
+    	swal("Error", "Illegal Request", "error", {
+        	button : false
+        });
     }
 }
 /* 结束设置服务器源 */
@@ -80,8 +88,8 @@ function set_server(source){
     </div>
     <div>
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
-            <h3 class="uk-card-title index-cate-h3">Save My Exams&nbsp;<span class="uk-label uk-label-success nav-title-v">Beta</span></h3>
-            <a href="/sme_cate"><p class="item-guide">Browse All Subjects</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            <h3 class="uk-card-title index-cate-h3">One Step&nbsp;<span class="uk-label uk-label-success nav-title-v">Extension</span></h3>
+            <a href="/onestep"><p class="item-guide">Find yourself a Paper</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
         </div>
         
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
@@ -104,10 +112,10 @@ function set_server(source){
     
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #03A9F4;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;">
             <div style="   float: left;">
-                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">One Step&nbsp;<span class="uk-label uk-label-success nav-title-v">Extension</span></h3>
-                <p style="margin: 0px;margin-left: 3px;">A quicker way to find a paper...</p>
+                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">SaveMyExams&nbsp;<span class="uk-label uk-label-success nav-title-v">A-Level Only</span></h3>
+                <p style="margin: 0px;margin-left: 3px;">Restricted Area...</p>
             </div>
-            <a href="/find" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
+            <a href="/sme" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #fbbd01;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
             <div style="   float: left;">
@@ -120,7 +128,7 @@ function set_server(source){
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #52c41a;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:-2%;display: inline-block;padding-bottom: 50px;">
             <div style="   float: left;">
                 <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Cambridge O Level</h3>
-                <p style="margin: 0px;margin-left: 3px;">Made for people who love to study...</p>
+                <p style="margin: 0px;margin-left: 3px;">Papers for Cambridge O-Levels...</p>
             </div>
             <a href="/cate?cate=O Levels" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>

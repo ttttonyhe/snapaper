@@ -1,4 +1,4 @@
-<?php require 'header.php' ?>
+<?php require '../header.php' ?>
        
 <div class="uk-container" style="margin-top: 6%;">
     <div class="sub-title-div">
@@ -12,18 +12,18 @@
 <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="border: none;padding: 20px 20px;text-align: center;background-image: linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%);margin: 0px;
 ">
             <h3 class="uk-card-title index-cate-h3" style="font-size: 1.6rem;
-"><a href="search?cate=IGCSE" style="color: #fff !important;text-decoration: none;
+"><a href="s?cate=IGCSE" style="color: #fff !important;text-decoration: none;
 ">Cambridge IGCSE</a></h3>
         </div>
 <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="border: none;padding: 20px 20px;background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);text-align: center;margin: 0px;margin-left: 2%;
 ">
             <h3 class="uk-card-title index-cate-h3" style="font-size: 1.6rem;
-"><a href="search?cate=O Levels" style="color: #fff !important;text-decoration: none;
+"><a href="s?cate=O Levels" style="color: #fff !important;text-decoration: none;
 ">Cambridge O Level</a></h3>
         </div><div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="border: none;padding: 20px 20px;background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);text-align: center;margin: 0px;margin-left: 2%;
 ">
             <h3 class="uk-card-title index-cate-h3" style="font-size: 1.6rem;
-"><a href="search?cate=A Levels" style="color: #fff !important;text-decoration: none;
+"><a href="s?cate=A Levels" style="color: #fff !important;text-decoration: none;
 ">Cambridge AS &amp; A level</a></h3>
         </div>
             

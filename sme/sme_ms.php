@@ -1,27 +1,9 @@
-
-<?php
-//Composer 依赖
-require 'vendor/autoload.php';
-use QL\QueryList;
-
-
-//判断参数是否输入
-if( !empty($_GET['cate']) && !empty($_GET['sub'])) {
-	
-	$cate = $_GET['cate'];
-	$sub = $_GET['sub'];
-
-	$html = file_get_contents('https://www.savemyexams.co.uk/'.$cate);
-	$data = QueryList::html($html)->rules([
-	'name' => ['.column-1>a','text'],
-	'url' => ['.column-1>a','href']
-	])->query()->getData();
-	$user_data = $data->all(); //获取查询数据
+<?php 
+	require '../header.php';
+	if(empty($_GET['sub'])){
 ?>
-
-
-
-<?php require 'header.php' ?>
+<script>history.go(-1);</script>
+<?php } ?>
 	<style>
 		.papers-list-td-right{
 			width: 380px !important;
@@ -172,7 +154,7 @@ function dismiss(){
 	<div class="papers-list-sticky" id="sticky">
 		<div style="float: left;">
 			<h3 style="margin-bottom: 0px;font-weight: 600;">Viewing</h3>
-			<p style="margin: 0px;font-weight: 300;margin-top: -3px;"><?php echo $_GET['sub']; ?></p></div><div style="float: right;padding-top: 10px;">
+			<p style="margin: 0px;font-weight: 300;margin-top: -3px;text-transform:capitalize"><?php echo $_GET['sub']; ?></p></div><div style="float: right;padding-top: 10px;">
 				<a onclick="download_all();" style="display: inline-block;">
 					<button class="uk-button uk-button-primary" style="border-radius: 5px;padding: 0px 10px;">Download All</button>
 				</a>
@@ -187,12 +169,12 @@ function dismiss(){
 	<div class="uk-container" style="margin-top: 6%;">
 	<div class="sub-title-div" style="margin-bottom:60px;display: flex;" id="top">
 	<div style="width: 73%;">
-		<h1 class="sub-title-h1"><?php echo $_GET['sub']; ?></h1>
+		<h1 class="sub-title-h1" style="text-transform:capitalize"><?php echo $_GET['sub']; ?><em style="font-size:1.5rem;color:#999;font-style:normal;font-weight:300;margin-left:15px">SaveMyExams</em></h1>
 		<p class="sub-title-p">Made by Snapaper sourced from SaveMyExams</p>
 	</div>
 	<div style="text-align: right;padding-top: 40px;display: flex;width:27%">
 	<div>
-		<em class="back-btn" style="color: #999;"><?php echo count($user_data) - 1; ?> Papers</em>
+		<em class="back-btn" style="color: #999;">Restricted Area</em>
 	</div>
 	<div style="margin-left: 10px;">
 		<a onclick="history.go(-1);">
@@ -211,6 +193,9 @@ function dismiss(){
 	</a>
 	<a onclick="download_list();">
 		<button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download List    </button>
+	</a>
+	<a href="https://www.savemyexams.co.uk/a-level" target="_blank">
+		<button class="uk-button uk-button-secondary" style="border-radius: 5px;margin-left: 0.5%;">Question Papers</button>
 	</a>
 </div>
 
@@ -270,18 +255,26 @@ if(isChrome){
 }
 </script>
 <?php
-	if(!empty($user_data)){ //开始读取数据
-	for($i=0;$i<count($user_data);$i++){ //循环获取数据
-		if(strpos($user_data[$i]['name'],'Series')==false && strpos($user_data[$i]['name'],'QP')==false && strpos($user_data[$i]['name'],'Thresholds')==false){
+$sub = $_GET['sub'];
+$hostdir = dirname(__FILE__).'/../content/'.$sub.'/'; //要读取的文件夹
+$url = '/content/'.$sub.'/'; //图片所存在的目录
+$filesnames = scandir($hostdir); //得到所有的文件
+$www = 'https://www.snapaper.com'; //域名
+$i = 0;
+
+foreach ($filesnames as $name){
+	++$i;
+	if($i > 2){
 ?>
 
 		<tr>
-			<td class="papers-list-td-left"><a href="download?filename=<?php echo 'https://www.savemyexams.co.uk'.$user_data[$i]['url']; ?>" id="<?php echo $i; ?>"><p><?php echo $user_data[$i]['name']; ?></p></a></td>
-			<td class="papers-list-td-right" style="width:480px !important">
+			<td class="papers-list-td-left"><a href="https://www.snapaper.com/download?filename=<?php echo $www.$url.$name; ?>" id="<?php echo $i; ?>"><p><?php echo $name; ?></p></a></td>
+			<td class="papers-list-td-right" style="width:530px !important">
 				<p>
 					<button class="papers-list-td-btn1" onclick="add_items(<?php echo $i; ?>)" id="btn<?php echo $i; ?>">Add to List</button>
-					<button class="papers-list-td-btn2" onclick="downloadFile('download?filename=<?php echo 'https://www.savemyexams.co.uk'.$user_data[$i]['url']; ?>')">Download</button>
-					<a onclick="live('<?php echo 'https://www.savemyexams.co.uk'.$user_data[$i]['url']; ?>');"><button class="papers-list-td-btn3">LiveView</button></a>
+					<button class="papers-list-td-btn2" onclick="downloadFile(`https://www.snapaper.com/download?filename=<?php echo $www.$url.$name; ?>`)">Download</button>
+					<a onclick="live(`<?php echo $www.$url.$name; ?>`);"><button class="papers-list-td-btn3">LiveView</button></a>
+					<button class="papers-list-td-btn2" style="color: #777;" uk-tooltip="title: <b>Notice</b><br/>Downloading and sharing this document will be considered an infringement of intellectual property rights; pos: top">Notice</button>
 				</p>
 			</td>
 		</tr>
@@ -289,11 +282,10 @@ if(isChrome){
 
 	
 <?php }} ?>
-<?php } ?>
 </tbody>
 </table>
 
-<div class="uk-placeholder uk-text-center" id="bottom">Paper resources are from GCE Guide, no one has the right to change and share them</div>
+<div class="uk-placeholder uk-text-center" id="bottom">Resources from savemyexams are not open to the public, storing and sharing of these resources is illegal</div>
 
 <input type="hidden" id="download_items">
 
@@ -305,9 +297,6 @@ if(isChrome){
 	<svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>
 </a>
 
-
-
-<?php } ?>
 
 	</div>
 </div>

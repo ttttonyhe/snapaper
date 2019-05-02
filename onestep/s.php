@@ -1,6 +1,6 @@
-<?php require 'header.php' ?>
+<?php require '../header.php' ?>
 <!-- 主div 开始 -->
-    <div class="uk-container" style="margin-top: 10%;">
+    <div class="uk-container" style="margin-top: 6%;">
     <!-- 信息内容开始 -->
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;">
     <div style="
@@ -27,9 +27,8 @@ function get_sub_num($str){
 
 <?php
 //Composer 依赖
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 use QL\QueryList;
-
 /* 获取服务器源 */
 $com0 = 'https://papers.gceguide.com';
 $xyz1 = 'https://papers.gceguide.xyz';
@@ -46,7 +45,6 @@ if(!isset($_COOKIE['snapaper_server'])){
 	}
 }
 /* 结束获取服务器源 */
-
 ?>
 
 <script>
@@ -59,7 +57,11 @@ if(!isset($_COOKIE['snapaper_server'])){
         var type = $('#type').val();
         var pap = $('#paper').val();
         var url = '<?php echo $source; ?>/' + cate + '/' + subject + '/' + sub + '_' + mon + year + '_' + type + '_' + pap + '.pdf';
-        window.open(url);
+        if(!cate || !sub || !year || !mon || !type || !pap){
+        	UIkit.notification({message: 'Imcomplete Information', status: 'danger'});
+        }else{
+        	window.open(url);
+        }
     }
 </script>
 
