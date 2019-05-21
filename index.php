@@ -89,7 +89,7 @@ function set_server(source){
     <div>
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
             <h3 class="uk-card-title index-cate-h3">One Step&nbsp;<span class="uk-label uk-label-success nav-title-v">Extension</span></h3>
-            <a href="/onestep"><p class="item-guide">Find yourself a Paper</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            <a href="/onestep"><p class="item-guide">Find Yourself a Paper</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
         </div>
         
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card">
@@ -102,6 +102,18 @@ function set_server(source){
             <h3 class="uk-card-title index-cate-h3">Cambridge Int'l AS &amp; A Level</h3>
             <a href="/cate?cate=<?php if($_COOKIE['snapaper_server'] == 4) echo 'Cambridge%20International%20AS%20%26%20A%20Levels'; else echo 'A Levels'; ?>">
                 <p class="item-guide">Browse All Subjects</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+        </div>
+        
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="padding: 30px;border-color:rgba(0, 172, 237, 0.9);width:47.7%">
+            <h3 class="uk-card-title index-cate-h3" style="margin-bottom: 3px;">2019 F/M A-Level Series</h3><a href="/case/?cate=alevel">
+                <p class="item-guide" style="margin: 0px;">See What's Available</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            
+        </div>
+        
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="padding: 30px;border-color:#fbbd01;width:47.7%">
+            <h3 class="uk-card-title index-cate-h3" style="margin-bottom: 3px;">2019 F/M IGCSE Series</h3><a href="#">
+                <p class="item-guide" style="margin: 0px;">Not Yet Ready</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next" ><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            
         </div>
             
     </div>
