@@ -111,8 +111,8 @@ function set_server(source){
         </div>
         
         <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card" style="padding: 30px;border-color:#fbbd01;width:47.7%">
-            <h3 class="uk-card-title index-cate-h3" style="margin-bottom: 3px;">2019 F/M IGCSE Series</h3><a href="#">
-                <p class="item-guide" style="margin: 0px;">Not Yet Ready</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next" ><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
+            <h3 class="uk-card-title index-cate-h3" style="margin-bottom: 3px;">2019 F/M IGCSE Series</h3><a href="/case/?cate=igcse>
+                <p class="item-guide" style="margin: 0px;">See What's Available</p><i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next" ><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></a>
             
         </div>
             
