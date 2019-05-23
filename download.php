@@ -19,4 +19,3 @@ function forceDownload($filename){
 
     return readfile($filename);
 }
-?>
