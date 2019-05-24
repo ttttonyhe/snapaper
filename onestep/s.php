@@ -58,7 +58,9 @@ if(!isset($_COOKIE['snapaper_server'])){
         var pap = $('#paper').val();
         var url = '<?php echo $source; ?>/' + cate + '/' + subject + '/' + sub + '_' + mon + year + '_' + type + '_' + pap + '.pdf';
         if(!cate || !sub || !year || !mon || !type || !pap){
-        	UIkit.notification({message: 'Imcomplete Information', status: 'danger'});
+            swal("Error", "Imcomplete Information", "error", {
+                button: false
+            });
         }else{
         	window.open(url);
         }
