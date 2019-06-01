@@ -44,7 +44,7 @@
                     <td>15/01/2019</td>
                 </tr>
                 <tr>
-                    <td>my struggle</td>
+                    <td>My Struggle</td>
                     <td>¥40.00</td>
                     <td>07/04/2019</td>
                 </tr>
