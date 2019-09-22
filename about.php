@@ -2,10 +2,6 @@
 
 <div class="uk-container page-container">
     <div class="uk-card uk-card-default uk-card-body page-body">
-    	<div class="page-top-div">
-        	<h1 class="page-title">About Snapaper</h1>
-        	<p class="page-des">Details about this website...</p>
-        </div>	
         <h3 class="uk-card-title index-cate-h3">Resource Guide</h3>
                 <p>This image is from GCE Guide (http://www.gceguide.com)<br/>
                     <img src="https://static.ouorz.com/res_guide.png" width="90%" height="auto">
