@@ -1,11 +1,11 @@
 <p align="center"><img src="https://i.loli.net/2019/03/30/5c9f75253b256.png" width="50%"></p>
-<p align="center">Built for International Students | Made with :heart: by TonyHe</p>
+<p align="center">A PastPaper Sharing and Downloading Platform | Made with :heart: by TonyHe</p>
 
 <br/>
 
 ## Thumbnail
 
-![Thumbnail1](https://i.loli.net/2019/02/17/5c693e385b0c0.png)
+![Thumbnail1](https://i.loli.net/2019/10/20/r67KLB2WsQqD4iE.png)
 
 <br/>
 
@@ -55,12 +55,12 @@ First version released
 <br/>
 
 ## Copyrights
-All Contents & names of this website are assets of owner, protected by law and powered by GCE Guide (http://www.gceguide.com)
+All Contents & names of this website are assets of owner, protected by law.
 
 <br/>
 
 ## Technical details
-This website (https://www.snapaper.com) does not have a database, all content data comes from GCE Guide (http://www.gceguide.com). All requests are obtained from the GCE Guide (http://www.gceguide.com) website, all the content has not been changed or downloaded. This website is based on the GCE Guide (http://www.gceguide.com) to provide a convenient download extension. This is 100% a non-profit website.
+This website (https://www.snapaper.com) does not have a database, all content data comes from the Internet. All requests are obtained from other websites, all the content has not been changed or downloaded. This website is 100% a non-profit project aiming to provide a convenient download extension for students.
 
 <br/>
 

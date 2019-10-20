@@ -1,5 +1,7 @@
 <?php require 'header.php' ?>
-
+<script>
+	window.location.href="https://www.ouorz.com/donation.html";
+</script>
 <div class="uk-container page-container">
     <div class="uk-card uk-card-default uk-card-body page-body">
     	<div class="page-top-div">
@@ -44,7 +46,7 @@
                     <td>15/01/2019</td>
                 </tr>
                 <tr>
-                    <td>My Struggle</td>
+                    <td>my struggle</td>
                     <td>¥40.00</td>
                     <td>07/04/2019</td>
                 </tr>
