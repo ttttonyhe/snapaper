@@ -1,3 +1,10 @@
+/*
+ * @Author: mikey.zhaopeng 
+ * @Date: 2019-10-29 22:40:43 
+ * @Last Modified by:   mikey.zhaopeng 
+ * @Last Modified time: 2019-10-29 22:40:43 
+ */
+
 var qp_url = function (name) {
     if (!!name && name.toString().indexOf('qp') > -1 && name.toString().indexOf('2_2') <= -1) {
         return true;

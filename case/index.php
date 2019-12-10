@@ -4,26 +4,41 @@
 	switch ($_GET['cate']) {
 		case 'igcse':
 			$host = 'igcse';
+			$title = '2019 F/M Series';
 			break;
 		
 		case 'alevel':
 			$host = 'alevel';
+			$title = '2019 F/M Series';
+			break;
+			
+		case 'sme':
+			$host = 'sme';
+			$title = 'SaveMyExams';
+			break;
+			
+		case 'ebooks':
+			$host = 'ebooks';
+			$title = 'Cambridge Textbooks (PDF)';
+			break;
+		
+		default:
+			$host = 'sme';
+			$title = 'SaveMyExams';
 			break;
 	}
 ?>
 
 
-    <div class="uk-container" style="margin-top: 6%;padding-left: 11vh;">
+    <div class="uk-container wap-index" style="margin-top: 6%;padding-left: 11vh;">
     <div class="sub-title-div" style="margin-bottom:60px;display: flex;">
-    <div style="
-    width: 73%;
-">
-        <h1 class="sub-title-h1">2019 F/M Series</h1>
-    	<p class="sub-title-p">Choose a subject and start exploring</p>
+    <div class="cate-left">
+        <h1 class="sub-title-h1"><?php echo $title; ?></h1>
+    	<p class="sub-title-p">Choose a topic and start exploring</p>
     </div>
-    <div style="text-align: right;padding-top: 40px;display: flex;width:27%">
+    <div class="cate-right">
     	<div>
-    	<em class="back-btn" style="color: #999;">Special</em>
+    	<em class="back-btn" style="color: #999;">Resoureces</em>
 	</div>
 	<div style="margin-left: 10px;">
 		<a onclick="history.go(-1);">

@@ -8,10 +8,22 @@
 			switch ($_GET['cate']) {
 		case 'igcse':
 			$host = 'igcse';
+			$title = '2019 F/M Series';
 			break;
 		
 		case 'alevel':
 			$host = 'alevel';
+			$title = '2019 F/M Series';
+			break;
+		
+		case 'ebooks':
+			$host = 'ebooks';
+			$title = 'Cambridge Textbooks (PDF)';
+			break;
+			
+		case 'sme':
+			$host = 'sme';
+			$title = 'SaveMyExams';
 			break;
 	}
 ?>
@@ -50,13 +62,13 @@
 	
 	
 	
-	<div class="uk-container" style="margin-top: 6%;">
+	<div class="uk-container wap-index" style="margin-top: 6%;">
 	<div class="sub-title-div" style="margin-bottom:60px;display: flex;" id="top">
-	<div style="width: 73%;">
-		<h1 class="sub-title-h1" style="text-transform:capitalize"><?php echo $_GET['sub']; ?><em style="font-size:1.5rem;color:#999;font-style:normal;font-weight:300;margin-left:15px">2019 F/M Series</em></h1>
-		<p class="sub-title-p">Made by Snapaper sourced from the Internet</p>
+	<div class="cate-left">
+		<h1 class="sub-title-h1" style="text-transform:capitalize"><?php echo $_GET['sub']; ?><em style="font-size:1.5rem;color:#999;font-style:normal;font-weight:300;margin-left:15px"><?php echo $title; ?></em></h1>
+		<p class="sub-title-p">Resources are sourced from the Internet</p>
 	</div>
-	<div style="text-align: right;padding-top: 40px;display: flex;width:27%">
+	<div class="cate-right">
 	<div>
 		<em class="back-btn" style="color: #999;">Special</em>
 	</div>
@@ -70,10 +82,9 @@
 	</div>
 	<div style="margin-top:2%">
 
-
 <div style="margin-bottom:10px" id="dl">
 	<a onclick="download_list();">
-		<button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download List    </button>
+		<button class="uk-button uk-button-danger" style="border-radius: 5px;margin-left: 0.5%;">Download from List    </button>
 	</a>
 </div>
 
@@ -93,7 +104,7 @@
 	<thead id="x">
 		<tr>
 			<th style="text-align:left">Paper Name</th>
-			<th style="text-align:left">Options</th>
+			<th style="text-align:left" class="wap-op">Options</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -144,14 +155,6 @@ foreach ($filesnames as $name){
 <div class="uk-placeholder uk-text-center" id="bottom">Resources from savemyexams are not open to the public, storing and sharing of these resources is illegal</div>
 
 <input type="hidden" id="download_items">
-
-<!-- 底部按钮 -->
-<a class="papers-list-to-top uk-animation-slide-right-small" id="to_top" onclick="toTop();">
-	<svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="4 13 10 7 16 13"></polyline></svg>
-</a>
-<a class="papers-list-to-top uk-animation-slide-right-small" style="bottom: 92px;" id="to_bottom" onclick="toBottom();">
-	<svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>
-</a>
 
 
 	</div>
