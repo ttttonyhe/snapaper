@@ -3,7 +3,7 @@
 <div class="uk-container uk-animation-slide-bottom-small wap-index" style="margin-top: 6%;" uk-scrollspy="target: > .uk-card; cls:uk-animation-slide-bottom-small; delay: 200">
     <div class="sub-title-div">
         <h1 class="sub-title-h1" style="display: inline-block;">All Papers</h1>
-        <a style="color:#666" onclick="set_server();" class="switcher" id="switch"><i class="czs-hand-slide"></i> Switch Server</a>
+        <a onclick="set_server();" class="switcher" id="switch">Switch Server</a>
     	<p class="sub-title-p">Choose a category and start exploring</p>
     </div>
     <div>
@@ -37,8 +37,8 @@
             
     </div>
 <div class="uk-card uk-card-default uk-card-hover uk-card-body index-card uk-scrollspy-inview special-index" style="border-color: #FFC107;margin-left: 0px;width: 47.85%;padding: 30px 0px 35px 30px;margin-left: 2%;">
-            <h3 class="uk-card-title index-cate-h3">Cambridge PDF eBooks<p style="font-size: 16px;font-weight: 400;letter-spacing: .5px;color: #666;margin: 0px;"><span style="margin-right: 6px;background-color:#fec31d" class="uk-label uk-label-success nav-title-v">Updating</span>Resources from GCEGuide.xyz</p>
-            <a href="https://www.snapaper.com/case/?cate=ebooks" style="float: right;font-size: 16px;font-weight: 400;margin-top: -45px;margin-right: 30px;border-radius: 5px;padding: 5px 10px;letter-spacing: .2px;">
+            <h3 class="uk-card-title index-cate-h3">Save My Exams<p style="font-size: 16px;font-weight: 400;letter-spacing: .5px;color: #666;margin: 0px;"><span style="margin-right: 6px;background-color:#fec31d" class="uk-label uk-label-success nav-title-v">Mark Scheme</span>Available for Cambridge A-Levels...</p>
+            <a href="/case?cate=sme" style="float: right;font-size: 16px;font-weight: 400;margin-top: -45px;margin-right: 30px;border-radius: 5px;padding: 5px 10px;letter-spacing: .2px;">
                 <p class="item-guide" style="margin: 0px;">Browse<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
             </h3>
             
@@ -53,29 +53,29 @@
     	<p class="sub-title-div2-p">Advanced applications</p>
     </div>
     
-    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #03A9F4;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #FF5722;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;">
             <div style="   float: left;">
-                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">SaveMyExams</h3>
-                <p style="margin: 0px;margin-left: 3px;"><span style="margin-right: 6px;" class="uk-label uk-label-success nav-title-v">Mark Scheme</span>Available for Cambridge A-Levels...</p>
+                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Cambridge eBooks</h3>
+                <p style="margin: 0px;margin-left: 3px;"><span style="margin-right: 6px;background-color:#FF5722" class="uk-label uk-label-success nav-title-v">Updating</span>Resources from GCEGuide.xyz...</p>
             </div>
-            <a href="/case?cate=sme" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
+            <a href="https://www.snapaper.com/case/?cate=ebooks" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
-    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #fbbd01;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #03A9F4;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
             <div style="   float: left;">
                 <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Donate to Me</h3>
-                <p style="margin: 0px;margin-left: 3px;">If you are feeling comfortable...</p>
+                <p style="margin: 0px;margin-left: 3px;">Thank you for your support...</p>
             </div>
             <a href="https://www.ouorz.com/donation.html" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
     
     <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #52c41a;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:-2%;display: inline-block;padding-bottom: 50px;">
             <div style="   float: left;">
-                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Cambridge O Level</h3>
-                <p style="margin: 0px;margin-left: 3px;">Papers for Cambridge O-Levels...</p>
+                <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">Study Platform</h3>
+                <p style="margin: 0px;margin-left: 3px;"><span style="margin-right: 6px;background-color:#5bc62a" class="uk-label uk-label-success nav-title-v">Updating</span>Excellent resources from the Internet...</p>
             </div>
-            <a href="/cate?cate=O Levels" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
+            <a href="https://platform.snapaper.com/" style="float: right;padding-top: 15px;text-decoration:none;"><p style="margin-top: 15px;">Click Here<i class="uk-slidenav-previous uk-icon uk-slidenav uk-slidenav-next"><svg width="14" height="14" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg" ratio="1"><polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline></svg></i></p></a>
     </div>
-    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #673AB7;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:-2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body" style="border-top: 4px solid #607D8B;width: 47.5%;border-radius: 5px;margin-bottom: 5%;margin-top:-2%;display: inline-block;padding-bottom: 50px;margin-left: 2.5%;">
             <div style="   float: left;">
                 <h3 class="uk-card-title index-cate-h3" style="font-size: 2.5rem;">About Us</h3>
                 <p style="margin: 0px;margin-left: 3px;">Information about this website...</p>
@@ -85,7 +85,7 @@
     </div>
     
     <?php if(!$is_wap){ ?>
-		<p class="index-copy">© 2018-2019 Snapaper | Hand-crafted with <i class="czs-heart" style="color:#ee561d"></i> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | <a href="http://www.beian.miit.gov.cn" target="_blank" style="color:#7c7c7c">蜀ICP备16017417号-10</a>&nbsp;| <a href="//www.dmca.com/Protection/Status.aspx?ID=d417d85d-5eca-456c-a894-c2367440c02b" title="DMCA.com Protection Status" class="dmca-badge">DMCA</a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></p>
+		<p class="index-copy">© 2018-<?php echo date('Y',time()); ?> Snapaper | Hand-crafted with <i class="czs-heart" style="color:#ee561d"></i> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b> | <a href="http://www.beian.miit.gov.cn" target="_blank" style="color:#7c7c7c">蜀ICP备16017417号-10</a>&nbsp;| <a href="//www.dmca.com/Protection/Status.aspx?ID=d417d85d-5eca-456c-a894-c2367440c02b" title="DMCA.com Protection Status" class="dmca-badge">DMCA</a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></p>
     <?php }else{ ?>
     	<p class="index-copy" style="text-align:center">Hand-crafted with <i class="czs-heart" style="color:#ee561d"></i> by <b><a href="https://www.ouorz.com" target="_blank" style="color:#7c7c7c">TonyHe</a></b></p>
     <?php } ?>
