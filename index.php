@@ -1,6 +1,6 @@
 <?php require 'header.php' ?>
 
-<div class="uk-container uk-animation-slide-bottom-small wap-index" style="margin-top: 6%;" uk-scrollspy="target: > .uk-card; cls:uk-animation-slide-bottom-small; delay: 200">
+<div class="uk-container uk-animation-slide-bottom-small wap-index" style="margin-top: 10%;" uk-scrollspy="target: > .uk-card; cls:uk-animation-slide-bottom-small; delay: 200">
     <div class="sub-title-div">
         <h1 class="sub-title-h1" style="display: inline-block;">All Papers</h1>
         <a onclick="set_server();" class="switcher" id="switch">Switch Server</a>
